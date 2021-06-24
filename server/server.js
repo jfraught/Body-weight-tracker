@@ -14,11 +14,11 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 // Apollo server instance
-/*const server = new ApolloServer({
+const server = new ApolloServer({
     typeDefs,
     resolvers,
     // context: authMiddleware
-})*/
+})
 
 // important middleware
 app.use(express.urlencoded({ extended: false }));
