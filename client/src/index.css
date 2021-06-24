@@ -17,3 +17,44 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+header {
+  background-color: #212529;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+header nav ul {
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+header nav ul li button {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  text-decoration: none;
+  color: white;
+  font-size: 1.55vw;
+}
+
+header nav ul li button:hover {
+  color: blue
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.55vw;
+}
+
+footer a {
+  text-decoration: none;
+  color: #212529;
+}

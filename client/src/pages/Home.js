@@ -30,7 +30,7 @@ const Home = () => {
 
             <hr/>
 
-            <h2>What We Do</h2>
+            <h2 id="what-we-do">What We Do</h2>
                 <p>
                     We're all about helping you achieve your body weight goals. <br/>
                     Track and Monitor your progress daily. <br/>
@@ -38,7 +38,7 @@ const Home = () => {
                 </p>
             <hr/>
 
-            <h2>What You Do</h2>
+            <h2 id="what-you-do">What You Do</h2>
                 <h3>Fill Out the Form Above!</h3>
                     <p>You know you want to...</p>
                 <h3>Set Your Goals</h3>
@@ -49,7 +49,7 @@ const Home = () => {
                     <p>Watch your progress!</p>
             <hr/>
 
-            <h2>Our Templates</h2>
+            <h2 id="our-template">Our Templates</h2>
                 <div>
                     <figure>
                         <img 
@@ -78,6 +78,8 @@ const Home = () => {
                         <figcaption>THICCCCCCCC - Jordan!</figcaption>
                     </figure>
                 </div>
+
+                <hr className="mx-5"/>
         </main>
     );
 };
