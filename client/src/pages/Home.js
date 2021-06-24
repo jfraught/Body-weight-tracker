@@ -39,36 +39,78 @@ const Home = () => {
                 </form>
         </section>
 
-            <hr/>
-
-        <section>
+        <section id="what-we-do" className="intro">
             <div>
-                <h2 id="what-we-do">What We Do</h2>
+                <h2 className="headBorder">What We Do</h2>
                     <p>
                         We're all about helping you achieve your body weight goals. <br/>
                         Track and Monitor your progress daily. <br/>
                         Upload progress pictures to see how far you've come!
                     </p>
             </div>
-
-            <hr/>
+        </section>
     
+        <section id="what-you-do">
             <div>
-                <h2 id="what-you-do">What You Do</h2>
-                    <h3>Fill Out the Form Above!</h3>
-                        <p>You know you want to...</p>
-                    <h3>Set Your Goals</h3>
-                        <p>Where would you like to be?</p>
-                    <h3>Take Your Initial Measurments</h3>
-                        <p>Body Weight, Waist Circumference, and progress pics.</p>
-                    <h3>See Results!</h3>
-                        <p>Watch your progress!</p>
+                <h2 className="headBorder">What You Do</h2>
             </div>
-
-            <hr/>
+                <div className="step">
+                    <h3>Fill out the form above!</h3>
+                        <div className="step-info">
+                            <div className="step-img">
+                                <img
+                                    src={require(`../assets/images/Landing/1.png`).default}
+                                    height="100vh"
+                                />
+                            </div>
+                            <div className="step-text">
+                                <p>You know you want to...</p>
+                            </div>
+                        </div>
+                    <h3>Set Your Goals!</h3>
+                        <div className="step-info">
+                            <div className="step-img">
+                                <img
+                                    src={require(`../assets/images/Landing/1.png`).default}
+                                    height="100vh"
+                                />
+                            </div>
+                            <div className="step-text">
+                                <p>Where would you like to be? </p>
+                            </div>
+                        </div>
+                    <h3>Take your measurements!</h3>
+                        <div className="step-info">
+                            <div className="step-img">
+                                <img
+                                    src={require(`../assets/images/Landing/1.png`).default}
+                                    height="100vh"
+                                />
+                            </div>
+                            <div className="step-text">
+                                <p>Body weight, waist circumference and progress pics!</p>
+                            </div>
+                        </div>
+                    <h3>See Results!</h3>
+                        <div className="step-info">
+                            <div className="step-img">
+                                <img
+                                    src={require(`../assets/images/Landing/1.png`).default}
+                                    height="100vh"
+                                />
+                            </div>
+                            <div className="step-text">
+                                <p>Watch as you progress towards your goal!</p>
+                            </div>
+                        </div>
+                </div>
+        </section>
     
-            <h2 id="our-template">Our Templates</h2>
-                <div>
+        <section id="our-template">
+            <div className="flex-row">
+                <h2 className="headBorder">Our Templates</h2>
+            </div>
+                <div className="templates">
                     <figure>
                         <img 
                             src={require(`../assets/images/Landing/1.png`).default}
@@ -96,10 +138,9 @@ const Home = () => {
                         <figcaption>THICCCCCCCC Jordan!</figcaption>
                     </figure>
                 </div>
+        </section>
     
                 <hr/>
-                
-            </section>
         </main>
     );
 };

@@ -55,6 +55,10 @@ header nav ul li a {
   font-size: 1.55vw;
 }
 
+footer {
+  text-align: center;
+}
+
 footer a {
   text-decoration: none;
   color: #212529;
@@ -76,6 +80,17 @@ form button:hover {
 hr {
   margin-left: 3vw;
   margin-right: 3vw;
+}
+
+section h2 {
+  text-align: center;
+}
+section p {
+  text-align: center;
+}
+
+figcaption {
+  text-align: center;
 }
 
 .hero {
@@ -110,11 +125,68 @@ hr {
 
 .cta {
   width: 45%;
-  color: black;
+  color: #212529;
   font-size: 3.5vh;
   line-height: 4.5vh;
 } 
 
 .cta p {
   padding-left: 5vh;
+}
+
+.intro {
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+.intro p {
+  line-height: 1.7;
+  width: 80%;
+  font-size: 3.5vh;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.headBorder {
+  border-bottom: 1px solid #212529;
+  margin-left:10vw;
+  margin-right: 10vw;
+  margin-top: 5vh;
+}
+
+.step {
+  margin: 7vh auto;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.step h3 {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  font-size: 4vh;
+  flex: 1 30%;
+}
+
+.step-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 2 70%;
+}
+
+.step-img {
+  flex: 1 12%;
+  margin-right: 20px;
+  padding: 1vh;
+}
+
+.templates {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  margin: 5vh auto;
 }
