@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 
@@ -28,10 +28,8 @@ function App() {
       <div>
         <Header />
         <div>
-          <Switch>
-            <Route exact path ='/' component={Home} />
-            <Route exact path ='/dashboard' component={Dashboard} />
-          </Switch>
+          <Route exact path ='/' component={Home} />
+          <Route exact path ='/dashboard' component={Dashboard} />
         </div>
         <Footer />
       </div>
