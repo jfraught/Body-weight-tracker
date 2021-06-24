@@ -1,6 +1,6 @@
 const { Schema } = require('mongoose');
 
-dailyMeasurementsSchema = new Schema ({
+const dailyMeasurementsSchema = new Schema ({
     date: {
         type: Date,
         min: '2021-01-01', 

@@ -1,6 +1,6 @@
 const { Schema } = require('mongoose');
 
-progressPics = new Schema ({
+const progressPics = new Schema ({
     initialFront: {
         type: String,
         required: true
