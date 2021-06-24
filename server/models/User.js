@@ -1,5 +1,6 @@
-const { Schema, model} = require('mongoose');
- 
+const { Schema, model } = require('mongoose');
+const bcrypt = require('bcrypt');
+
 
 const userSchema = new Schema({
 name:  {
@@ -20,5 +21,20 @@ email: {
 
 })
 
+// middleware pre-save for creating the hashed password
+userSchema.pre('save', async function(next) {
+    if(this.isNew || this.isModified('password')) {
+        const saltRounds = 10;
+        this.password = await bcrypt.hash(this.password, saltRounds);
+    }
 
-module.exports = userSchema;
+    next();
+});
+
+// this will compare the incoming password with the hashed password
+userSchema.methods.isCorrectPassword = async function(password) {
+    return bcrypt.compare(password, this.password);
+};
+
+const User = model('User', userSchema);
+module.exports = User;
