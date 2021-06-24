@@ -1,4 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
+  color: #212529;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +17,180 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+header {
+  background-color: #212529;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+header nav ul {
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+header nav ul li button {
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: none;
+  color: white;
+  font-size: 1.55vw;
+}
+
+header nav ul li button:hover {
+  color: blue
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.55vw;
+}
+
+footer {
+  text-align: center;
+}
+
+footer a {
+  text-decoration: none;
+  color: #212529;
+}
+
+form button {
+  font-weight: bold;
+  background: #212529;
+  color: white;
+  padding: 1.2vh;
+  text-decoration: none;
+  border-radius: 1.5vh;
+}
+
+form button:hover {
+  color: blue;
+}
+
+hr {
+  margin-left: 3vw;
+  margin-right: 3vw;
+}
+
+section h2 {
+  text-align: center;
+}
+section p {
+  text-align: center;
+}
+
+figcaption {
+  text-align: center;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 10vh;
+}
+
+.signup-label {
+  font-size: 3.5vh;
+  font-weight: bold;
+  padding-bottom: 1vh;
+}
+
+.signup-form {
+  flex-wrap: wrap;
+  border: solid 3px #212529;
+  width: 50%;
+  border-radius: 3vh;
+  padding: 3vh;
+}
+
+.form-input {
+  font-size: 2.5vh;
+  display: block;
+  width: 100%;
+  padding: 1vh;
+  border-radius: 1.5vh;;
+}
+
+.cta {
+  width: 45%;
+  color: #212529;
+  font-size: 3.5vh;
+  line-height: 4.5vh;
+} 
+
+.cta p {
+  padding-left: 5vh;
+}
+
+.intro {
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+.intro p {
+  line-height: 1.7;
+  width: 80%;
+  font-size: 3.5vh;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.headBorder {
+  border-bottom: 1px solid #212529;
+  margin-left:10vw;
+  margin-right: 10vw;
+  margin-top: 5vh;
+}
+
+.step {
+  margin: 7vh auto;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.step h3 {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  font-size: 4vh;
+  flex: 1 30%;
+}
+
+.step-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 2 70%;
+}
+
+.step-img {
+  flex: 1 12%;
+  margin-right: 20px;
+  padding: 1vh;
+}
+
+.step-text {
+  font-size: 3vh;
+}
+
+.templates {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  margin: 5vh auto;
 }
