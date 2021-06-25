@@ -5,6 +5,7 @@ type User {
    _id: ID
    name: String
    email: String 
+   password: String
 }
 
 type Profile {
@@ -17,7 +18,6 @@ type Profile {
 }
 
 type DayLog {
-   
    bodyweight: Int
    waisteCircumference: Int
    bmi: Int 
@@ -48,12 +48,10 @@ type Query {
 
 type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(name: String!, email: String!, password: String!): Auth
+    addUser(name: String!, email: String!, password: String!): User
     addProfile(height: Int!, goalWeight: Int!, goalWaist: Int!, goalBMI: Int!): Profile
     addDayLog( bodyWeight: Int!, waisteCircumference: Int!, bmi:Int!): DayLog
     addProgressPics(profileId: ID!, initialFront: String!, initialSide: String!, initialBack: String!,  currentFront: String! ,  currentSide: String! , currentBack: String! ): Profile
-    
-
 }
 `
 
