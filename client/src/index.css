@@ -211,7 +211,7 @@ td {
 
 .dashboard h2 {
   padding-top: 3vh;
-  padding-left: 3vh;
+  padding-left: 10vh;
 }
 
 .dashboard h3 {
@@ -266,4 +266,15 @@ td {
 .top-pics {
   display: flex;
   justify-content: center;
+}
+
+.login {
+  width: 40%;
+  margin: auto;
+  padding-top: 10vh;
+  padding-bottom: 15%;
+}
+
+.login button {
+  margin: auto
 }

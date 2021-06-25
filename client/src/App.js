@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
 
 const client = new ApolloClient({
   request: operation => {
@@ -30,6 +31,7 @@ function App() {
         <div>
           <Route exact path ='/' component={Home} />
           <Route exact path ='/dashboard' component={Dashboard} />
+          <Route exact path='/login' component={Login} />
         </div>
         <Footer />
       </div>
