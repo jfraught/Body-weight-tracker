@@ -38,9 +38,11 @@ type Auth {
     user: User
 }
 
+
+
+
 type Query {
     user: User
-    progress(initialFront: String!, initialSide: String!, initialBack: String!,  currentFront: String! ,  currentSide: String! , currentBack: String!): [Profile]
     profile: Profile
     daylog: DayLog
 
