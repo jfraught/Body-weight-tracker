@@ -14,6 +14,16 @@ const resolvers = {
           throw new AuthenticationError('not logged in');
     },
 
+    profile: async (parent, {_id}) => {
+    return    Profile.findOne({_id})
+    },
+
+    daylog: async(parent, {_id}) => {
+        return DayLog.findOne({_id})
+    }
+
+
+
   },  
   // mutation logic
   Mutation: {
@@ -38,7 +48,12 @@ const resolvers = {
 
           return { token, user };
 
-      }
+      },
+      addProfile: async (parent, args) => {
+          const profile = Profile.create({args});
+          return profile
+      },
+      
   }
 };
 
