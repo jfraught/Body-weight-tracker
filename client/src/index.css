@@ -82,15 +82,28 @@ hr {
   margin-right: 3vw;
 }
 
-section h2 {
-  text-align: center;
-}
-section p {
+figcaption {
   text-align: center;
 }
 
-figcaption {
+table {
+  margin: auto;
+  margin-bottom: 5vh;
+}
+
+table, td {
+  border: 1px solid #212529;
+}
+
+th {
   text-align: center;
+  background-color: #212529;
+  color: white;
+  border: 1px solid white;
+}
+
+td {
+  padding: 1vh;
 }
 
 .hero {
@@ -148,6 +161,7 @@ figcaption {
 }
 
 .headBorder {
+  text-align: center;
   border-bottom: 1px solid #212529;
   margin-left:10vw;
   margin-right: 10vw;
@@ -193,4 +207,63 @@ figcaption {
   justify-content: space-around;
   width: 100%;
   margin: 5vh auto;
+}
+
+.dashboard h2 {
+  padding-top: 3vh;
+  padding-left: 3vh;
+}
+
+.dashboard h3 {
+  font-size: 4vh;
+  padding-left: 40vh;
+}
+
+.dashboard ul {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+
+.dashboard button {
+  float: right;
+  font-weight: bold;
+  background: #212529;
+  color: white;
+  padding: 1.2vh;
+  text-decoration: none;
+  border-radius: 1.5vh;
+  margin-right: 8vw;
+}
+
+.dashboard button:hover {
+  color: blue;
+}
+
+.dashboard li {
+  display: inline;
+  padding: 10vh;
+  font-weight: bold;
+  font-size: 4vh;
+  margin: auto;
+}
+
+.photo-section {
+  text-align: center;
+  margin-bottom: 5vh;
+}
+
+.photo-section figure {
+  display: table;
+}
+
+.photo-section figcaption {
+  display: table-caption;
+  caption-side: top;
+  font-weight: bold;
+  font-size: 4vh;
+}
+
+.top-pics {
+  display: flex;
+  justify-content: center;
 }

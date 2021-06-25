@@ -61,6 +61,7 @@ const Home = () => {
                                 <img
                                     src={require(`../assets/images/Landing/1.png`).default}
                                     height="100vh"
+                                    alt=""
                                 />
                             </div>
                             <div className="step-text">
@@ -73,6 +74,7 @@ const Home = () => {
                                 <img
                                     src={require(`../assets/images/Landing/1.png`).default}
                                     height="100vh"
+                                    alt=""
                                 />
                             </div>
                             <div className="step-text">
@@ -85,6 +87,7 @@ const Home = () => {
                                 <img
                                     src={require(`../assets/images/Landing/1.png`).default}
                                     height="100vh"
+                                    alt=""
                                 />
                             </div>
                             <div className="step-text">
@@ -97,6 +100,7 @@ const Home = () => {
                                 <img
                                     src={require(`../assets/images/Landing/1.png`).default}
                                     height="100vh"
+                                    alt=""
                                 />
                             </div>
                             <div className="step-text">
