@@ -11,7 +11,7 @@ const Header = () => {
                     <li className="px-3"><a href="#what-we-do">What We Do</a></li>
                     <li className="px-3"><a href="#what-you-do">What You Do</a></li>
                     <li className="px-3"><a href="#our-template">Our Templates</a></li>
-                    <li className="px-3"><button><Link to="/login">Sign In</Link></button></li>
+                    <li className="px-3"><button><Link to="/signup">Login/Sign Up</Link></button></li>
                 </ul>
             </nav>
         </header>

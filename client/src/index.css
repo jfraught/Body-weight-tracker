@@ -278,3 +278,8 @@ td {
 .login button {
   margin: auto
 }
+
+.login p {
+  margin-top:5vh;
+  font-size: 3.5vh;
+}
