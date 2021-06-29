@@ -21,9 +21,9 @@ const Header = () => {
                     </>
                 ) : (
                     <>
-                        <a className="px-3" href="#what-we-do">What We Do</a>
-                        <a className="px-3" href="#what-you-do">What You Do</a>
-                        <a className="px-3" href="#our-template">Our Templates</a>
+                        <a className="px-3" href="/#what-we-do">What We Do</a>
+                        <a className="px-3" href="/#what-you-do">What You Do</a>
+                        <a className="px-3" href="/#our-template">Our Templates</a>
                         <Link to="/login" className="px-3">Login</Link> 
                     </>
                 )}

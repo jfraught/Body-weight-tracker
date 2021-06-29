@@ -1,7 +1,30 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom'
 import Auth from '../utils/auth';
 
 const Dashboard = () => {
+    const formatDate = (date) => {
+        let dd = date.getDate();
+        let mm = date.getMonth()+1;
+        if(dd<10) {dd='0'+dd};
+        if(mm<10) {mm='0'+mm};
+        date = mm+'/'+dd;
+        return date;
+    }
+
+    const dateHandler = () => {
+        let date = [];
+        for (let i = 0; i < 7; i++) {
+            let d = new Date();
+            d.setDate(d.getDate() - i);
+            date.push(formatDate(d))
+        }
+        console.log(date.join(','));
+        return(date.join(','));
+    }
+
+    dateHandler();
+
     return (
         <section className="dashboard">
             {Auth.loggedIn() ? (
@@ -10,9 +33,9 @@ const Dashboard = () => {
             
                     <div>
                         <ul>
-                            <li>Pounds From Goal: <span></span></li>
-                            <li>Inches From Goal: <span></span></li>
-                            <li>BMI Points From Goal: <span></span></li>
+                            <li>Pounds From Goal: <span>420</span></li>
+                            <li>Inches From Goal: <span>69</span></li>
+                            <li>BMI Points From Goal: <span>789</span></li>
                         </ul>
             
                         <button>
@@ -160,7 +183,8 @@ const Dashboard = () => {
             </>
             ) : (
                 <>
-                    <div className="auth-fail">Please login or signup to view your dashboard!</div>
+                    <Redirect to="/" />
+                    {/*<div className="auth-fail">Please login or signup to view your dashboard!</div>*/}
                 </>
             )}    
         </section>
