@@ -3,14 +3,8 @@ const bcrypt = require('bcrypt');
 
 
 const userSchema = new Schema({
-<<<<<<< HEAD
-name:  {
-    type: String,
-    
-=======
 display_name:  {
     type: String
->>>>>>> 32eaf02b9269c63327bb630473f93a1fd3f1df3b
 },
 email: {
     type: String,
