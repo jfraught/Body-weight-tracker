@@ -50,7 +50,7 @@ type Query {
 
 type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(disply_name: String!, email: String!, password: String!): Auth
+    addUser(display_name: String!, email: String!, password: String!): Auth
     addProfile(height: Int!, goalWeight: Int!, goalWaist: Int!, goalBMI: Int!): Profile
     addDayLog( bodyWeight: Int!, waisteCircumference: Int!, bmi:Int!): DayLog
     addProgressPics(profileId: ID!, initialFront: String!, initialSide: String!, initialBack: String!,  currentFront: String! ,  currentSide: String! , currentBack: String! ): Profile
