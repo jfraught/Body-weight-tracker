@@ -1,6 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/react-hooks';
+import { ADD_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 const Home = () => {
+    const [formState, setFormState] = useState({display_name: '', email: '', password: ''});
+    const [addUser, { error }] = useMutation(ADD_USER);
+    
+    const handleChange = event => {
+        const { name, value } = event.target;
+
+        setFormState({
+            ...formState,
+            [name]: value
+        });
+    };
+    
+    const handleSubmit = async event => {
+        event.preventDefault();
+
+        try {
+            const { data } = await addUser({
+                variables: { ...formState }
+            });
+
+            Auth.login(data.addUser.token);
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
     return (
         <main>
             <section className="hero">
@@ -12,31 +41,33 @@ const Home = () => {
                     </p>
                 </div>
     
-                <form className="signup-form">
+                <form className="signup-form" onSubmit={handleSubmit}>
                     <h2>Let's Start Your Journey!</h2>
                     <div>
                         <label htmlFor='name' className="signup-label">Name:</label>
-                        <input type='text' name='name' defaultValue='Your Name' className="form-input"></input>
+                        <input type='text' name='name' value={formState.display_name} placeholder="Display Name" className="form-input" onChange={handleChange} />
                     </div>
     
                     <br/>
 
                     <div>
                         <label htmlFor='email' className="signup-label">Email:</label>
-                        <input type='email' name='email' defaultValue='Your Email' className="form-input"></input>
+                        <input type='email' name='email' value={formState.email} placeholder="Your Email" className="form-input" onChange={handleChange} />
                     </div>
 
                     <br/>
     
                     <div>
                         <label htmlFor='password' className="signup-label">Password:</label>
-                        <input type='text' name='password' defaultValue='Password' className="form-input" ></input>
+                        <input type='password' name='password' value={formState.password} placeholder="Password" className="form-input" onChange={handleChange} />
                     </div>
                     
                     <br/>
     
-                    <button>Let the Changes Begin!</button>
+                    <button type="submit">Let the Changes Begin!</button>
                 </form>
+
+                {error && <div>Your signup went wrong ☹️</div>}
         </section>
 
         <section id="what-we-do" className="intro">

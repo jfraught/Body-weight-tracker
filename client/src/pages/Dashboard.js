@@ -21,24 +21,28 @@ const Dashboard = () => {
                 <h3>Body Weight - Last 7 days</h3>
 
                 <table>
-                    <tr>
-                        <th>Day</th>
-                        <th>Day</th>
-                        <th>Day</th>
-                        <th>Day</th>
-                        <th>Day</th>
-                        <th>Day</th>
-                        <th>Day</th>
-                    </tr>
-                    <tr>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Day</th>
+                            <th>Day</th>
+                            <th>Day</th>
+                            <th>Day</th>
+                            <th>Day</th>
+                            <th>Day</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div><br/>
 
@@ -46,24 +50,28 @@ const Dashboard = () => {
                 <h3>Waist Circumference - Last 7 days</h3>
 
                 <table>
-                    <tr>
-                        <th>Day</th>
-                        <th>Day</th>
-                        <th>Day</th>
-                        <th>Day</th>
-                        <th>Day</th>
-                        <th>Day</th>
-                        <th>Day</th>
-                    </tr>
-                    <tr>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Day</th>
+                            <th>Day</th>
+                            <th>Day</th>
+                            <th>Day</th>
+                            <th>Day</th>
+                            <th>Day</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div><br/>
 
@@ -71,24 +79,28 @@ const Dashboard = () => {
                 <h3>BMI - Last 7 days</h3>
 
                 <table>
-                    <tr>
-                        <th>Day</th>
-                        <th>Day</th>
-                        <th>Day</th>
-                        <th>Day</th>
-                        <th>Day</th>
-                        <th>Day</th>
-                        <th>Day</th>
-                    </tr>
-                    <tr>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                        <td>Measurment</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Day</th>
+                            <th>Day</th>
+                            <th>Day</th>
+                            <th>Day</th>
+                            <th>Day</th>
+                            <th>Day</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                            <td>Measurment</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
 
