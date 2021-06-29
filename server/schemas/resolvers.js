@@ -13,13 +13,22 @@ const resolvers = {
           }
           throw new AuthenticationError('not logged in');
     },
+    users: async () => {
+        return User.find();
+    },
 
     profile: async (parent, {_id}) => {
     return    Profile.findOne({_id})
     },
+    profiles: async () => {
+        return Profile.find();
+    },
 
     daylog: async(parent, {_id}) => {
         return DayLog.findOne({_id})
+    },
+    daylogs: async () => {
+        return DayLog.find();
     }
 
 
@@ -31,9 +40,9 @@ const resolvers = {
           const user = await User.create(args);
           const token = signToken(user)
 
-          return (token, user);
+          return  {token, user} ;
       },
-      login: async (parent, {email, password}) => {
+      login: async (parent, {email, password, }) => {
           const user = await User.findOne({email});
 
           if(!user) {
@@ -49,11 +58,14 @@ const resolvers = {
           return { token, user };
 
       },
-      addProfile: async (parent, args) => {
-          const profile = Profile.create({args});
-          return profile
+      addProfile: async (parent, {height, goalWeight, goalWaist, goalBMI}) => {
+          const profile = Profile.create({height, goalWeight, goalWaist, goalBMI});
+          return profile;
       },
-      
+      addDayLog: async (parent, {bodyWeight, waistCircumference, bmi}) => {
+const dayLog = DayLog.create({bodyWeight, waistCircumference, bmi});
+return dayLog;
+      },
   }
 };
 

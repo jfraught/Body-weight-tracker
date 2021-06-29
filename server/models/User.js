@@ -4,7 +4,8 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
 name:  {
-    type: String
+    type: String,
+    
 },
 email: {
     type: String,
@@ -19,7 +20,9 @@ email: {
  }
 
 
-})
+}
+
+)
 
 // middleware pre-save for creating the hashed password
 userSchema.pre('save', async function(next) {
