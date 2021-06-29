@@ -55,7 +55,7 @@ const Login = props => {
                 <button type='submit'>Sign In</button>
             </form>
 
-            {error && <div>Something went wrong ☹️</div>}
+            {error && <div className="login-error">Something went wrong ☹️</div>}
         </section>
     );
 };

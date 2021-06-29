@@ -45,29 +45,29 @@ const Home = () => {
                     <h2>Let's Start Your Journey!</h2>
                     <div>
                         <label htmlFor='name' className="signup-label">Name:</label>
-                        <input type='text' name='name' value={formState.display_name} placeholder="Display Name" className="form-input" onChange={handleChange} />
+                        <input type='input' name='name' placeholder="Display Name" className="form-input" onChange={handleChange} />
                     </div>
     
                     <br/>
 
                     <div>
                         <label htmlFor='email' className="signup-label">Email:</label>
-                        <input type='email' name='email' value={formState.email} placeholder="Your Email" className="form-input" onChange={handleChange} />
+                        <input type='email' name='email' placeholder="Your Email" className="form-input" onChange={handleChange} />
                     </div>
 
                     <br/>
     
                     <div>
                         <label htmlFor='password' className="signup-label">Password:</label>
-                        <input type='password' name='password' value={formState.password} placeholder="Password" className="form-input" onChange={handleChange} />
+                        <input type='password' name='password' placeholder="Password" className="form-input" onChange={handleChange} />
                     </div>
                     
                     <br/>
+
+                    {error && <div className="signup-error">Your signup went wrong ☹️</div>}
     
                     <button type="submit">Let the Changes Begin!</button>
                 </form>
-
-                {error && <div>Your signup went wrong ☹️</div>}
         </section>
 
         <section id="what-we-do" className="intro">
