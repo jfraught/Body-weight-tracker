@@ -40,11 +40,7 @@ const resolvers = {
           const user = await User.create(args);
           const token = signToken(user)
 
-<<<<<<< HEAD
-          return  {token, user} ;
-=======
           return ({ token, user });
->>>>>>> cc0bba70b56c5750d48c5b2714750edfa45ace53
       },
       login: async (parent, { email, password} ) => {
           const user = await User.findOne({ email });
