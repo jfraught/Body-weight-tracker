@@ -45,14 +45,11 @@ header nav ul li button {
   font-size: 1.55vw;
 }
 
-header nav ul li button:hover {
-  color: blue
-}
-
-header nav ul li a {
+header nav a {
   text-decoration: none;
   color: white;
   font-size: 1.55vw;
+  
 }
 
 footer {
@@ -247,6 +244,14 @@ td {
   margin: auto;
 }
 
+.auth-fail {
+  text-align: center;
+  padding-top: 30vh;
+  padding-bottom: 40vh;
+  font-size: 5vh;
+  font-weight: bold;
+}
+
 .photo-section {
   text-align: center;
   margin-bottom: 5vh;
@@ -283,3 +288,20 @@ td {
   margin-top:5vh;
   font-size: 3.5vh;
 }
+
+.login-error {
+  padding-top:3vh;
+  text-align: center;
+  font-size: 3.5vh;
+  font-weight: bold;
+  color: red;
+}
+
+.signup-error {
+  padding-bottom: 2.5vh;
+  text-align: center;
+  font-size: 3.5vh;
+  font-weight: bold;
+  color: red;
+}
+

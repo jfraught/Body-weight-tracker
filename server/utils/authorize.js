@@ -8,6 +8,7 @@ const expiration = '2h';
     signToken: function({ name, email, _id  }) {
         const payload = { name, email, _id };
 
+<<<<<<< HEAD
         return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
     },
 
@@ -23,6 +24,11 @@ const expiration = '2h';
             .trim();
             console.log("token", token)
         }
+=======
+    if (!token) {
+      return req;
+    }
+>>>>>>> 38a7f6c96c943b5d92e15031ec9974c8d68b17ac
 
         // if no token, return request object as is
         if(!token) {

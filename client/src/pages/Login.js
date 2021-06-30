@@ -40,14 +40,14 @@ const Login = props => {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor='email' className='signup-label'>Email:</label>
-                    <input type='email' name='email' defaultValue='Your Email' className="form-input" onChange={handleChange} />
+                    <input type='email' name='email' value={formState.email} placeholder="Your email" className="form-input" onChange={handleChange} />
                 </div>
 
                 <br/>
 
                 <div>
                     <label htmlFor='password' className='signup-label'>Password:</label>
-                    <input type='password' name='password' defaultValue='Password' className='form-input' onChange={handleChange} />
+                    <input type='password' name='password' value={formState.password} placeholder="********" className='form-input' onChange={handleChange} />
                 </div>
             
                 <br/>
@@ -55,7 +55,7 @@ const Login = props => {
                 <button type='submit'>Sign In</button>
             </form>
 
-            {error && <div>Something went wrong ☹️</div>}
+            {error && <div className="login-error">Something went wrong ☹️</div>}
         </section>
     );
 };
