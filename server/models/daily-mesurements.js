@@ -1,25 +1,28 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-dailyMeasurementsSchema = new Schema ({
+const dailyMeasurementsSchema = new Schema ({
     date: {
         type: Date,
+        default: Date.now,
         min: '2021-01-01', 
         max: '2022-01-01',
         required: true
     },
     bodyWeight: {
-        type: Int,
+        type: Number,
         default: 0 
     },
     waistCircumference: {
-        type: Int, 
+        type: Number, 
         default: 0
     }, 
     bmi: {
-        type: Int,
+        type: Number,
         default: 0
     }
 });
 
-module.exports = dailyMeasurementsSchema;
+const DayLog = model('DayLog', dailyMeasurementsSchema)
+
+module.exports = DayLog;
 

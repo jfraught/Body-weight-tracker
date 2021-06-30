@@ -1,4 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
+  color: #212529;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -11,3 +18,290 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+header {
+  background-color: #212529;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+header nav ul {
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+header nav ul li button {
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: none;
+  color: white;
+  font-size: 1.55vw;
+}
+
+header nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.55vw;
+  
+}
+
+footer {
+  text-align: center;
+}
+
+footer a {
+  text-decoration: none;
+  color: #212529;
+}
+
+form button {
+  font-weight: bold;
+  background: #212529;
+  color: white;
+  padding: 1.2vh;
+  text-decoration: none;
+  border-radius: 1.5vh;
+}
+
+form button:hover {
+  color: blue;
+}
+
+hr {
+  margin-left: 3vw;
+  margin-right: 3vw;
+}
+
+figcaption {
+  text-align: center;
+}
+
+table {
+  margin: auto;
+  margin-bottom: 5vh;
+}
+
+table, td {
+  border: 1px solid #212529;
+}
+
+th {
+  text-align: center;
+  background-color: #212529;
+  color: white;
+  border: 1px solid white;
+}
+
+td {
+  padding: 1vh;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 10vh;
+}
+
+.signup-label {
+  font-size: 3.5vh;
+  font-weight: bold;
+  padding-bottom: 1vh;
+}
+
+.signup-form {
+  flex-wrap: wrap;
+  border: solid 3px #212529;
+  width: 50%;
+  border-radius: 3vh;
+  padding: 3vh;
+}
+
+.form-input {
+  font-size: 2.5vh;
+  display: block;
+  width: 100%;
+  padding: 1vh;
+  border-radius: 1.5vh;;
+}
+
+.cta {
+  width: 45%;
+  color: #212529;
+  font-size: 3.5vh;
+  line-height: 4.5vh;
+} 
+
+.cta p {
+  padding-left: 5vh;
+}
+
+.intro {
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+.intro p {
+  line-height: 1.7;
+  width: 80%;
+  font-size: 3.5vh;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.headBorder {
+  text-align: center;
+  border-bottom: 1px solid #212529;
+  margin-left:10vw;
+  margin-right: 10vw;
+  margin-top: 5vh;
+}
+
+.step {
+  margin: 7vh auto;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.step h3 {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  font-size: 4vh;
+  flex: 1 30%;
+}
+
+.step-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 2 70%;
+}
+
+.step-img {
+  flex: 1 12%;
+  margin-right: 20px;
+  padding: 1vh;
+}
+
+.step-text {
+  font-size: 3vh;
+}
+
+.templates {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  margin: 5vh auto;
+}
+
+.dashboard h2 {
+  padding-top: 3vh;
+  padding-left: 10vh;
+}
+
+.dashboard h3 {
+  font-size: 4vh;
+  padding-left: 40vh;
+}
+
+.dashboard ul {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+
+.dashboard button {
+  float: right;
+  font-weight: bold;
+  background: #212529;
+  color: white;
+  padding: 1.2vh;
+  text-decoration: none;
+  border-radius: 1.5vh;
+  margin-right: 8vw;
+}
+
+.dashboard button:hover {
+  color: blue;
+}
+
+.dashboard li {
+  display: inline;
+  padding: 10vh;
+  font-weight: bold;
+  font-size: 4vh;
+  margin: auto;
+}
+
+.auth-fail {
+  text-align: center;
+  padding-top: 30vh;
+  padding-bottom: 40vh;
+  font-size: 5vh;
+  font-weight: bold;
+}
+
+.photo-section {
+  text-align: center;
+  margin-bottom: 5vh;
+}
+
+.photo-section figure {
+  display: table;
+}
+
+.photo-section figcaption {
+  display: table-caption;
+  caption-side: top;
+  font-weight: bold;
+  font-size: 4vh;
+}
+
+.top-pics {
+  display: flex;
+  justify-content: center;
+}
+
+.login {
+  width: 40%;
+  margin: auto;
+  padding-top: 10vh;
+  padding-bottom: 15%;
+}
+
+.login button {
+  margin: auto
+}
+
+.login p {
+  margin-top:5vh;
+  font-size: 3.5vh;
+}
+
+.login-error {
+  padding-top:3vh;
+  text-align: center;
+  font-size: 3.5vh;
+  font-weight: bold;
+  color: red;
+}
+
+.signup-error {
+  padding-bottom: 2.5vh;
+  text-align: center;
+  font-size: 3.5vh;
+  font-weight: bold;
+  color: red;
+}
+

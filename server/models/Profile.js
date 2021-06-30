@@ -1,48 +1,29 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
+const progressPicsSchema= require('./progress-pics');
 
-progressPics = new Schema ({
-    initialFront: {
-        type: String,
-        required: true
-    },
-    initialSide: {
-        type: String,
-        required: true
-    },
-    initialBack: {
-        type: String,
-        required: true
-    },
-    currentFront: {
-        type: String
-    }, 
-    currentSide: {
-        type: String
-    }, 
-    currentBack: {
-        type: String
-    }
-})
 
-profileSchema = new Schema({
+
+const profileSchema = new Schema({
     height: {
-        type: Int,
+        type: Number,
         required: true,
         default: 0
     },
     goalWeight: {
-        type: Int,
+        type: Number,
         default: 0
     },
     goalWaist: {
-        type: Int,
+        type: Number,
         default: 0
     }, 
     goalBMI: {
-        type: Int,
+        type: Number,
         default: 0
     }, 
-    progress: [progressPics]
+    progress: [progressPicsSchema]
 });
 
-module.exports = profileSchema;
+const Profile = model('Profile', profileSchema);
+
+module.exports = Profile;
