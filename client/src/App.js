@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { ApolloProvider } from '@apollo/react-hooks';
+import { ApolloProvider, InMemoryCache } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 
 import Header from './components/Header';
@@ -8,8 +8,11 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
+import { createUploadLink } from 'apollo-upload-client'
 
 const client = new ApolloClient({
+
+
   request: operation => {
     const token = localStorage.getItem('id_token');
 
@@ -19,8 +22,13 @@ const client = new ApolloClient({
       }
     });
   },
-  uri: '/graphql'
-});
+  link: createUploadLink({
+   uri: '/graphql'
+  }),
+cache: new InMemoryCache(),
+})
+  
+
 
 function App() {
   return (

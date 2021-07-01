@@ -44,22 +44,22 @@ const Home = () => {
                 <form className="signup-form" onSubmit={handleSubmit}>
                     <h2>Let's Start Your Journey!</h2>
                     <div>
-                        <label htmlFor='name' className="signup-label">Name:</label>
-                        <input type='input' name='name' placeholder="Display Name" className="form-input" onChange={handleChange} />
+                        <label htmlFor='display_name' className="signup-label">Name:</label>
+                        <input type='display_name' id='display_name' name='display_name' placeholder="Display Name" className="form-input" onChange={handleChange} />
                     </div>
     
                     <br/>
 
                     <div>
                         <label htmlFor='email' className="signup-label">Email:</label>
-                        <input type='email' name='email' placeholder="Your Email" className="form-input" onChange={handleChange} />
+                        <input type='email' name='email' id= 'email' placeholder="Your Email" className="form-input" onChange={handleChange} />
                     </div>
 
                     <br/>
     
                     <div>
                         <label htmlFor='password' className="signup-label">Password:</label>
-                        <input type='password' name='password' placeholder="Password" className="form-input" onChange={handleChange} />
+                        <input id='password' type='password' name='password' placeholder="Password" className="form-input" onChange={handleChange} />
                     </div>
                     
                     <br/>
