@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
 import { Button, Modal } from 'react-bootstrap';
 import { ADD_DAILY_STATS } from '../utils/mutations';
@@ -11,7 +11,7 @@ const Dashboard = () => {
     const handleShow = () => setShow(true);
 
     const [modalState, setModalState] = useState({ weight: '', waist: '' });
-    const [addDayLog, { error }] = useMutation(ADD_DAILY_STATS)
+    const [addDayLog] = useMutation(ADD_DAILY_STATS)
 
     let date = [];
     let dailyStats=[];
@@ -72,9 +72,9 @@ const Dashboard = () => {
             
                     <div>
                         <ul>
-                            <li>Pounds From Goal: <span>420</span></li>
-                            <li>Inches From Goal: <span>69</span></li>
-                            <li>BMI Points From Goal: <span>789</span></li>
+                            <li>Pounds From Goal: <span>**</span></li>
+                            <li>Inches From Goal: <span>*</span></li>
+                            <li>BMI Points From Goal: <span>**</span></li>
                         </ul>
             
                         <button type="button" onClick={handleShow}>
@@ -88,24 +88,24 @@ const Dashboard = () => {
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Day</th>
-                                    <th>Day</th>
-                                    <th>Day</th>
-                                    <th>Day</th>
-                                    <th>Day</th>
-                                    <th>Day</th>
-                                    <th>Day</th>
+                                    <th>06/25</th>
+                                    <th>06/26</th>
+                                    <th>06/27</th>
+                                    <th>06/28</th>
+                                    <th>06/29</th>
+                                    <th>06/30</th>
+                                    <th>Today</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Today</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -117,24 +117,24 @@ const Dashboard = () => {
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Day</th>
-                                    <th>Day</th>
-                                    <th>Day</th>
-                                    <th>Day</th>
-                                    <th>Day</th>
-                                    <th>Day</th>
-                                    <th>Day</th>
+                                    <th>06/25</th>
+                                    <th>06/26</th>
+                                    <th>06/27</th>
+                                    <th>06/28</th>
+                                    <th>06/29</th>
+                                    <th>06/30</th>
+                                    <th>Today</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Today</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -146,24 +146,24 @@ const Dashboard = () => {
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Day</th>
-                                    <th>Day</th>
-                                    <th>Day</th>
-                                    <th>Day</th>
-                                    <th>Day</th>
-                                    <th>Day</th>
-                                    <th>Day</th>
+                                    <th>06/25</th>
+                                    <th>06/26</th>
+                                    <th>06/27</th>
+                                    <th>06/28</th>
+                                    <th>06/29</th>
+                                    <th>06/30</th>
+                                    <th>Today</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
-                                    <td>Measurment</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Today</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -222,8 +222,13 @@ const Dashboard = () => {
             </>
             ) : (
                 <>
-                    <Redirect to="/" />
-                    {/*<div className="auth-fail">Please login or signup to view your dashboard!</div>*/}
+                    <div className="auth-fail">
+                        Please login or signup to view your dashboard!
+                        <div>
+                            <Link className="px-3 auth-link" to="/login">Login</Link>
+                            <Link className="px-3 auth-link" to="/">Signup</Link>
+                        </div>
+                    </div>
                 </>
             )}  
 

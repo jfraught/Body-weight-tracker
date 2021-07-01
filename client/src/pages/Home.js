@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { Modal, Button } from 'react-bootstrap';
-import { Redirect } from 'react-router-dom'
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
@@ -172,7 +171,7 @@ const Home = () => {
                 <div className="templates">
                     <figure>
                         <img 
-                            src={require(`../assets/images/Landing/1.png`).default}
+                            src={require(`../assets/images/Landing/sebastian.png`).default}
                             alt=''
                             height='300em' 
                         />
@@ -181,7 +180,7 @@ const Home = () => {
     
                     <figure>
                         <img 
-                            src={require(`../assets/images/Landing/1.png`).default}
+                            src={require(`../assets/images/Landing/dan.png`).default}
                             alt=''
                             height='300em' 
                         />
@@ -190,7 +189,7 @@ const Home = () => {
     
                     <figure>
                         <img 
-                            src={require(`../assets/images/Landing/1.png`).default}
+                            src={require(`../assets/images/Landing/jordan.png`).default}
                             alt=''
                             height='300em' 
                         />
