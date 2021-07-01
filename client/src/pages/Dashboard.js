@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom'
+import { useMutation } from '@apollo/react-hooks';
+import { Button, Modal } from 'react-bootstrap';
+import { ADD_DAILY_STATS } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const Dashboard = () => {
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const [modalState, setModalState] = useState({ weight: '', waist: '' });
+    const [addDayLog, { error }] = useMutation(ADD_DAILY_STATS)
+
+    let date = [];
+    let dailyStats=[];
+
     const formatDate = (date) => {
         let dd = date.getDate();
         let mm = date.getMonth()+1;
@@ -13,14 +26,40 @@ const Dashboard = () => {
     }
 
     const dateHandler = () => {
-        let date = [];
         for (let i = 0; i < 7; i++) {
             let d = new Date();
             d.setDate(d.getDate() - i);
             date.push(formatDate(d))
         }
-        console.log(date.join(','));
-        return(date.join(','));
+        date.reverse();
+        return(date);
+    }
+
+    const modalSubmit = async e => {
+        e.preventDefault();
+        
+        try {
+            const { data } = await addDayLog({
+                variables: { ...modalState }
+            });
+
+            let dailyStatsInput = {
+                date: date[6],
+                weight: data.weight,
+                waist: data.waist, 
+                BMI: ''
+            };
+
+            //console.log(dailyStats);
+
+            dailyStats.push(dailyStatsInput);
+
+            setModalState({ weight: '', waist: '' })
+        } catch (err) {
+            console.log(err);
+        }
+
+        handleClose();
     }
 
     dateHandler();
@@ -38,7 +77,7 @@ const Dashboard = () => {
                             <li>BMI Points From Goal: <span>789</span></li>
                         </ul>
             
-                        <button>
+                        <button type="button" onClick={handleShow}>
                             Add Daily Stats
                         </button>
                     </div>
@@ -186,7 +225,39 @@ const Dashboard = () => {
                     <Redirect to="/" />
                     {/*<div className="auth-fail">Please login or signup to view your dashboard!</div>*/}
                 </>
-            )}    
+            )}  
+
+            {show && (
+                <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+              >
+                <Modal.Header>
+                  <Modal.Title>Enter Your Measurments for {date[6]}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <form>
+                        <div>
+                            <label htmlFor="weight" className="signup-label">Weight: </label>
+                            <input type="number" name="weight" placeholder="weight" id="weight" className="form-input"/>
+                        </div> 
+
+                        <div>
+                            <label htmlFor="waist" className="signup-label">Waist Circumference: </label>
+                            <input type="number" name="waist" placeholder="waist circumference"  id="waist" className="form-input"/>
+                        </div>    
+                    </form>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button id="modalButton-close" onClick={handleClose}>
+                    Close
+                  </Button>
+                  <Button id="modalButton-submit" onClick={modalSubmit}>Submit My Measurments</Button>
+                </Modal.Footer>
+              </Modal>
+            )}  
         </section>
     );
 };
