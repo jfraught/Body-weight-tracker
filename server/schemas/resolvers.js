@@ -4,29 +4,28 @@ const { signToken } = require('../utils/authorize');
 
 const resolvers = {
   Query: {
-      user: async (parent, args, context) => {
-          if (context.user) {
-              const userData = await User.findOne({_id: context.user._id})
-              .select('-__v -password')
-              
-              return userData
-          }
-          throw new AuthenticationError('Not logged in');
+    user: async (parent, args, context) => {
+        if (context.user) {
+            const userData = await User.findOne({_id: context.user._id})
+            .select('-__v -password')
+            
+            return userData
+        }
+        throw new AuthenticationError('Not logged in');
     },
+    
     users: async () => {
         return User.find();
     },
 
     profile: async (parent, {_id}) => {
-    return    Profile.findOne({_id})
+        return Profile.findOne({_id})
     },
+
     profiles: async () => {
         return Profile.find();
     },
 
-    daylog: async(parent, {_id}) => {
-        return DayLog.findOne({_id})
-    },
     daylogs: async () => {
         return DayLog.find();
     }
@@ -62,9 +61,9 @@ const resolvers = {
           const profile = Profile.create({height, goalWeight, goalWaist, goalBMI});
           return profile;
       },
-      addDayLog: async (parent, {bodyWeight, waistCircumference, bmi}) => {
-const dayLog = DayLog.create({bodyWeight, waistCircumference, bmi});
-return dayLog;
+      addDayLog: async (parent, { weight, waist }) => {
+        const dayLog = await DayLog.create({ ...weight, waist });
+        return dayLog;
       },
   }
 };

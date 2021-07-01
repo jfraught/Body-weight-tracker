@@ -19,9 +19,8 @@ type Profile {
 
 type DayLog {
     _id: ID
-   bodyWeight: Int
-   waistCircumference: Int
-   bmi: Int 
+   weight: String
+   waist: String
 }
 
 type ProgressPics {
@@ -39,9 +38,6 @@ type Auth {
     user: User
 }
 
-
-
-
 type Query {
     user: User
     users: [User]
@@ -49,14 +45,13 @@ type Query {
     profiles: [Profile]
     daylog: DayLog
     daylogs: [DayLog]
-
 }
 
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(display_name: String!, email: String!, password: String!): Auth
     addProfile(height: Int!, goalWeight: Int!, goalWaist: Int!, goalBMI: Int!): Profile
-    addDayLog( bodyWeight: Int!, waistCircumference: Int!, bmi:Int!): DayLog
+    addDayLog(weight: String!, waist: String!): DayLog
     addProgressPics(profileId: ID!, initialFront: String!, initialSide: String!, initialBack: String!,  currentFront: String! ,  currentSide: String! , currentBack: String! ): Profile
 }
 `

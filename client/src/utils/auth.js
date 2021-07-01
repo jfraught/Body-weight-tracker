@@ -32,6 +32,10 @@ class AuthService {
         window.location.assign('/dashboard')
     }
 
+    signup (idToken) {
+        localStorage.setItem('id_token', idToken);
+    }
+
     logout() {
         localStorage.removeItem('id_token');
         window.location.assign('/');

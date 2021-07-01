@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
+import { Modal, Button } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom'
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const Home = () => {
     const [formState, setFormState] = useState({display_name: '', email: '', password: ''});
     const [addUser, { error }] = useMutation(ADD_USER);
+
+    const [homeShow, setHomeShow] = useState(false);
+    const homeHandleClose = () => setHomeShow(false);
+    const homeHandleShow = () => setHomeShow(true);
     
     const handleChange = event => {
         const { name, value } = event.target;
@@ -23,12 +29,17 @@ const Home = () => {
             const { data } = await addUser({
                 variables: { ...formState }
             });
+            homeHandleShow();
 
-            Auth.login(data.addUser.token);
+            Auth.signup(data.addUser.token);
         } catch (e) {
             console.error(e);
         }
     };
+
+    const handleCreate = () => {
+        Auth.login();
+    }
 
     return (
         <main>
@@ -40,33 +51,46 @@ const Home = () => {
                         we've got your back (and waist)!
                     </p>
                 </div>
-    
+        
                 <form className="signup-form" onSubmit={handleSubmit}>
-                    <h2>Let's Start Your Journey!</h2>
-                    <div>
-                        <label htmlFor='name' className="signup-label">Name:</label>
-                        <input type='input' name='name' placeholder="Display Name" className="form-input" onChange={handleChange} />
-                    </div>
-    
-                    <br/>
+                    {!Auth.loggedIn() ? (
+                        <>
+                            <h2>Let's Start Your Journey!</h2>
+                            <div>
+                                <label htmlFor='name' className="signup-label">Name:</label>
+                                <input type='input' name='name' placeholder="Display Name" className="form-input" onChange={handleChange} />
+                            </div>
 
-                    <div>
-                        <label htmlFor='email' className="signup-label">Email:</label>
-                        <input type='email' name='email' placeholder="Your Email" className="form-input" onChange={handleChange} />
-                    </div>
+                            <br/>
 
-                    <br/>
-    
-                    <div>
-                        <label htmlFor='password' className="signup-label">Password:</label>
-                        <input type='password' name='password' placeholder="Password" className="form-input" onChange={handleChange} />
-                    </div>
-                    
-                    <br/>
+                            <div>
+                                <label htmlFor='email' className="signup-label">Email:</label>
+                                <input type='email' name='email' placeholder="Your Email" className="form-input" onChange={handleChange} />
+                            </div>
 
-                    {error && <div className="signup-error">Your signup went wrong ☹️</div>}
-    
-                    <button type="submit">Let the Changes Begin!</button>
+                            <br/>
+
+                            <div>
+                                <label htmlFor='password' className="signup-label">Password:</label>
+                                <input type='password' name='password' placeholder="Password" className="form-input" onChange={handleChange} />
+                            </div>
+
+                            <br/>
+
+                            {error && <div className="signup-error">Your signup went wrong ☹️</div>}
+
+                            <button type="submit">Let the Changes Begin!</button>
+                        </>
+                    ) : (
+                        <>
+                        <img
+                            className="logo"
+                            src={require('../assets/images/Landing/1.png').default} 
+                            height="300vh"
+                            alt="logo placeholder"
+                        />
+                        </>
+                    )}
                 </form>
         </section>
 
@@ -90,8 +114,8 @@ const Home = () => {
                         <div className="step-info">
                             <div className="step-img">
                                 <img
-                                    src={require(`../assets/images/Landing/1.png`).default}
-                                    height="100vh"
+                                    src={require(`../assets/images/Landing/form.png`).default}
+                                    height="75vh"
                                     alt=""
                                 />
                             </div>
@@ -103,8 +127,8 @@ const Home = () => {
                         <div className="step-info">
                             <div className="step-img">
                                 <img
-                                    src={require(`../assets/images/Landing/1.png`).default}
-                                    height="100vh"
+                                    src={require(`../assets/images/Landing/goal.png`).default}
+                                    height="75vh"
                                     alt=""
                                 />
                             </div>
@@ -116,8 +140,8 @@ const Home = () => {
                         <div className="step-info">
                             <div className="step-img">
                                 <img
-                                    src={require(`../assets/images/Landing/1.png`).default}
-                                    height="100vh"
+                                    src={require(`../assets/images/Landing/scale.png`).default}
+                                    height="75vh"
                                     alt=""
                                 />
                             </div>
@@ -129,8 +153,8 @@ const Home = () => {
                         <div className="step-info">
                             <div className="step-img">
                                 <img
-                                    src={require(`../assets/images/Landing/1.png`).default}
-                                    height="100vh"
+                                    src={require(`../assets/images/Landing/muscle.png`).default}
+                                    height="75vh"
                                     alt=""
                                 />
                             </div>
@@ -173,6 +197,40 @@ const Home = () => {
                         <figcaption>THICCCCCCCC Jordan!</figcaption>
                     </figure>
                 </div>
+
+                {homeShow && (
+                <Modal
+                show={homeShow}
+                onHide={homeHandleClose}
+                backdrop="static"
+                keyboard={false}
+              >
+                <Modal.Header>
+                  <Modal.Title>Enter Your Measurments!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <form>
+                        <div>
+                            <label htmlFor="height" className="signup-label">Height: </label>
+                            <input type="number" name="weight" placeholder="Height" id="height" className="form-input"/>
+                        </div> 
+
+                        <div>
+                            <label htmlFor="weight" className="signup-label">Weight: </label>
+                            <input type="number" name="weight" placeholder="Weight" id="weight" className="form-input"/>
+                        </div> 
+
+                        <div>
+                            <label htmlFor="waist" className="signup-label">Waist Circumference: </label>
+                            <input type="number" name="waist" placeholder="Waist Circumference"  id="waist" className="form-input"/>
+                        </div>    
+                    </form>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button id="modalButton-submit" onClick={handleCreate}>Submit My Measurments</Button>
+                </Modal.Footer>
+              </Modal>
+            )} 
         </section>
     
                 <hr/>
