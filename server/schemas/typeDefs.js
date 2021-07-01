@@ -38,7 +38,9 @@ type Auth {
     user: User
 }
  
-
+type File {
+    filename: String!
+}
 
 
 
@@ -61,7 +63,7 @@ type Query {
 }
 
 scalar Upload extend type Mutation {
-    addProgressPics( initialFront: Upload! ): String!
+    addProgressPics( filename: Upload! ): File!
 }
 `
 
