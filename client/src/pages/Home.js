@@ -85,8 +85,8 @@ const Home = () => {
                         <>
                         <img
                             className="logo"
-                            src={require('../assets/images/Landing/1.png').default} 
-                            height="300vh"
+                            src={require('../assets/images/Landing/logoipsum.png').default} 
+                            height="120vw"
                             alt="logo placeholder"
                         />
                         </>
