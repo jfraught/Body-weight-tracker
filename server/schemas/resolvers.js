@@ -35,11 +35,12 @@ const resolvers = {
         return DayLog.find();
     },
 
-    uploads: (parent, args) => {}
+   // uploads: (parent, args) => {}
 
 
 
   }, 
+  Upload: GraphQLUpload,
    
   Mutation: {
       addUser: async (parent, args) => {
@@ -72,7 +73,7 @@ const resolvers = {
         const dayLog = await DayLog.create({ ...weight, waist });
         return dayLog;
       },
-      Upload: GraphQLUpload,
+      
       addProgressPics:  async (_, { file }) => {
         let { filename, createReadStream } = await file;
         let stream = createReadStream();

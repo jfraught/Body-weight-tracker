@@ -37,7 +37,7 @@ type Auth {
     token: ID
     user: User
 }
-
+ 
 
 
 
@@ -49,15 +49,19 @@ type Query {
     profiles: [Profile]
     daylog: DayLog
     daylogs: [DayLog]
-    uploads: [File]
+    
 }
 
-scalar upload extend type Mutation {
+ type Mutation {
     login(email: String!, password: String!): Auth
     addUser(display_name: String!, email: String!, password: String!): Auth
     addProfile(height: Int!, goalWeight: Int!, goalWaist: Int!, goalBMI: Int!): Profile
     addDayLog( bodyWeight: Int!, waistCircumference: Int!, bmi:Int!): DayLog
-    addProgressPics( file: Upload! ): String!
+   
+}
+
+scalar Upload extend type Mutation {
+    addProgressPics( initialFront: Upload! ): String!
 }
 `
 
