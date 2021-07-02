@@ -319,6 +319,8 @@ td {
 }
 
 #modalButton-submit {
+  float: right;
+  margin:5vh 3vw;
   font-weight: bold;
   background: blue;
   color: white;
@@ -328,6 +330,8 @@ td {
 }
 
 #modalButton-close {
+  float: right;
+  margin:5vh 0vh;
   font-weight: bold;
   background: #212529;
   color: white;

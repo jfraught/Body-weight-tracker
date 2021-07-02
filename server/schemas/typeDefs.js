@@ -59,7 +59,7 @@ type Query {
     login(email: String!, password: String!): Auth
     addUser(display_name: String!, email: String!, password: String!): Auth
     addProfile(height: Int!, goalWeight: Int!, goalWaist: Int!, goalBMI: Int!): Profile
-    addDayLog(weight: String!, waist: String!): DayLog
+    addDayLog(bodyWeight: Int!, waistCircumference: Int!, bmi: Int): DayLog
    
 }
 

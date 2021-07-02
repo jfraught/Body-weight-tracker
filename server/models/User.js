@@ -1,7 +1,5 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const DayLog = require('./DayLog');
-
 
 const userSchema = new Schema({
     display_name:  {
@@ -17,8 +15,7 @@ const userSchema = new Schema({
          type: String,
          required: true,
          minlength: 8
-     },
-     dayLog: [DayLog]
+     }
 })
 
 // middleware pre-save for creating the hashed password

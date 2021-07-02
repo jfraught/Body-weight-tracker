@@ -10,12 +10,7 @@ const Dashboard = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [modalState, setModalState] = useState({ weight: '', waist: '' });
-    const [addDayLog] = useMutation(ADD_DAILY_STATS)
-
     let date = [];
-    let dailyStats=[];
-
     const formatDate = (date) => {
         let dd = date.getDate();
         let mm = date.getMonth()+1;
@@ -24,7 +19,6 @@ const Dashboard = () => {
         date = mm+'/'+dd;
         return date;
     }
-
     const dateHandler = () => {
         for (let i = 0; i < 7; i++) {
             let d = new Date();
@@ -35,31 +29,29 @@ const Dashboard = () => {
         return(date);
     }
 
-    const modalSubmit = async e => {
-        e.preventDefault();
-        
+    const [modalState, setModalState] = useState({ bodyWeight: 0, waistCircumference: 0 });
+    const[addDayLog, { error }] = useMutation(ADD_DAILY_STATS);
+
+    const modalChange = event => {
+        const { name, value } = event.target;
+
+        setModalState({
+            ...modalState,
+            [name]: value
+        });    
+    }
+
+    const modalSubmit = async event => {
+        event.preventDefault();
+
         try {
             const { data } = await addDayLog({
                 variables: { ...modalState }
             });
-
-            let dailyStatsInput = {
-                date: date[6],
-                weight: data.weight,
-                waist: data.waist, 
-                BMI: ''
-            };
-
-            //console.log(dailyStats);
-
-            dailyStats.push(dailyStatsInput);
-
-            setModalState({ weight: '', waist: '' })
-        } catch (err) {
-            console.log(err);
+            console.log(data);
+        } catch (e) {
+            console.error(e)
         }
-
-        handleClose();
     }
 
     dateHandler();
@@ -238,29 +230,28 @@ const Dashboard = () => {
                 onHide={handleClose}
                 backdrop="static"
                 keyboard={false}
+                animation={false}
               >
                 <Modal.Header>
                   <Modal.Title>Enter Your Measurments for {date[6]}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <form>
+                    <form onSubmit={modalSubmit}>
                         <div>
                             <label htmlFor="weight" className="signup-label">Weight: </label>
-                            <input type="number" name="weight" placeholder="weight" id="weight" className="form-input"/>
+                            <input type="number" name="weight" placeholder="weight" id="weight" className="form-input" onChange={modalChange}/>
                         </div> 
 
                         <div>
                             <label htmlFor="waist" className="signup-label">Waist Circumference: </label>
-                            <input type="number" name="waist" placeholder="waist circumference"  id="waist" className="form-input"/>
-                        </div>    
+                            <input type="number" name="waist" placeholder="waist circumference" id="waist" className="form-input" onChange={modalChange}/>
+                        </div> 
+                        <Button id="modalButton-submit" type="submit">Submit My Measurments</Button>  
+                        <Button id="modalButton-close" onClick={handleClose}>
+                            Close
+                        </Button> 
                     </form>
                 </Modal.Body>
-                <Modal.Footer>
-                  <Button id="modalButton-close" onClick={handleClose}>
-                    Close
-                  </Button>
-                  <Button id="modalButton-submit" onClick={modalSubmit}>Submit My Measurments</Button>
-                </Modal.Footer>
               </Modal>
             )}  
         </section>

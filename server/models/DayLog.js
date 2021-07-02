@@ -1,14 +1,18 @@
 const { Schema, model } = require('mongoose');
 
 const dailyMeasurementsSchema = new Schema ({
-    weight: {
-        type: String,
+    bodyWeight: {
+        type: Number,
         default: 0 
     },
-    waist: {
-        type: String, 
+    waistCircumference: {
+        type: Number, 
         default: 0
     }, 
+    bmi: {
+        type: Number,
+        default: 0
+    }
 });
 
 const DayLog = model('DayLog', dailyMeasurementsSchema)
