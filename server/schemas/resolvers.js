@@ -69,8 +69,8 @@ const resolvers = {
           const profile = Profile.create({height, goalWeight, goalWaist, goalBMI});
           return profile;
       },
-      addDayLog: async (parent, { weight, waist }) => {
-        const dayLog = await DayLog.create({ ...weight, waist });
+      addDayLog: async (parent, { bodyWeight, waistCircumference, bmi }) => {
+        const dayLog = await DayLog.create({ bodyWeight, waistCircumference, bmi });
         return dayLog;
       },
       

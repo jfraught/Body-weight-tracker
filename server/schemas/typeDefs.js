@@ -19,8 +19,9 @@ type Profile {
 
 type DayLog {
     _id: ID
-   weight: String
-   waist: String
+   bodyWeight: Int
+   waistCircumference: Int
+   bmi: Int
 }
 
 type ProgressPics {
