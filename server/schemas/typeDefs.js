@@ -18,7 +18,7 @@ type Profile {
 }
 
 type DayLog {
-    _id: ID
+   _id: ID
    weight: String
    waist: String
 }
@@ -56,7 +56,7 @@ type Query {
     login(email: String!, password: String!): Auth
     addUser(display_name: String!, email: String!, password: String!): Auth
     addProfile(height: Int!, goalWeight: Int!, goalWaist: Int!, goalBMI: Int!): Profile
-    addDayLog( bodyWeight: Int!, waistCircumference: Int!, bmi:Int!): DayLog
+    addDayLog(weight: String!, waist: String!): DayLog
    
 }
 

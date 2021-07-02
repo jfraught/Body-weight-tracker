@@ -71,7 +71,7 @@ const resolvers = {
       },
       addDayLog: async (parent, { weight, waist }) => {
         const dayLog = await DayLog.create({ ...weight, waist });
-        return dayLog;
+        return (dayLog);
       },
       
       addProgressPics:  async (_, { file }) => {
