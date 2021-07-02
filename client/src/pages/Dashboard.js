@@ -28,10 +28,12 @@ const Dashboard = () => {
         date.reverse();
         return(date);
     }
-
-    const [modalState, setModalState] = useState({ bodyWeight: 0, waistCircumference: 0 });
+    
+    const [modalState, setModalState] = useState({ bodyWeight:0, waistCircumference: 0 });
+    
     const[addDayLog, { error }] = useMutation(ADD_DAILY_STATS);
 
+    
     const modalChange = event => {
         const { name, value } = event.target;
 
@@ -46,7 +48,9 @@ const Dashboard = () => {
 
         try {
             const { data } = await addDayLog({
+               
                 variables: { ...modalState }
+                
             });
             console.log(data);
         } catch (e) {
