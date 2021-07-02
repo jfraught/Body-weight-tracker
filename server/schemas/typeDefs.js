@@ -19,8 +19,9 @@ type Profile {
 
 type DayLog {
    _id: ID
-   weight: String
-   waist: String
+   bodyWeight: Int
+   waistCircumference: Int
+   bmi: Int
 }
 
 type ProgressPics {
@@ -38,7 +39,9 @@ type Auth {
     user: User
 }
  
-
+type File {
+    filename: String!
+}
 
 
 
@@ -61,7 +64,7 @@ type Query {
 }
 
 scalar Upload extend type Mutation {
-    addProgressPics( initialFront: Upload! ): String!
+    addProgressPics( filename: Upload! ): File!
 }
 `
 
