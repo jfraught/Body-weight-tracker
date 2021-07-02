@@ -236,18 +236,18 @@ const Dashboard = () => {
                   <Modal.Title>Enter Your Measurments for {date[6]}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
-                        <Form.Group controlId="formBasicEmail">
+                    <Form onSubmit={modalSubmit}>
+                        <Form.Group>
                             <Form.Label>Body Weight</Form.Label>
-                            <Form.Control type="input" placeholder="Body Weight" name="bodyWeight" />
+                            <Form.Control type="input" placeholder="Body Weight" name="bodyWeight" onChange={modalChange} />
                         </Form.Group>
 
-                        <Form.Group controlId="formBasicPassword">
+                        <Form.Group>
                             <Form.Label>Waist Circumference</Form.Label>
-                            <Form.Control type="input" placeholder="Wiast Circumference" name="waistCircumference" />
+                            <Form.Control type="input" placeholder="Wiast Circumference" name="waistCircumference" onChange={modalChange} />
                         </Form.Group>
                         <Button id="modalButton-submit" type="submit">
-                            Submit
+                            Submit Your Measurments
                         </Button>
                         <Button id="modalButton-close" onClick={handleClose}>
                             Close
