@@ -48,7 +48,7 @@ type Query {
     profile: Profile
     profiles: [Profile]
     daylog: DayLog
-    daylogs: [DayLog]
+    dayLogs: [DayLog]
 
 }
 
