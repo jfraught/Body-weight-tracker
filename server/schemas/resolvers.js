@@ -1,7 +1,7 @@
-const {User, Profile, DayLog} = require('../models');
+const {User, Profile, DayLog } = require('../models');
 const { AuthenticationError} = require('apollo-server-express');
 const { signToken } = require('../utils/authorize');
-const { createWriteStream } = require('fs');
+const { createWriteStream, stat } = require('fs');
 const { GraphQLUpload } = require('graphql-upload');
 const { parse, join } = require('path');
 // may or may not need this
@@ -11,7 +11,7 @@ const resolvers = {
   Query: {
     user: async (parent, args, context) => {
         if (context.user) {
-            const userData = await User.findOne({_id: context.user._id})
+            const userData = await User.findOne({_id: context.user.display_name})
             .select('-__v -password')
             
             return userData
@@ -29,11 +29,7 @@ const resolvers = {
 
     profiles: async () => {
         return Profile.find();
-    },
-
-    daylogs: async () => {
-        return DayLog.find();
-    },
+    }
 
    // uploads: (parent, args) => {}
 
@@ -69,9 +65,18 @@ const resolvers = {
           const profile = Profile.create({height, goalWeight, goalWaist, goalBMI});
           return profile;
       },
-      addDayLog: async (parent, { bodyWeight, waistCircumference, bmi }) => {
-        const dayLog = await DayLog.create({ bodyWeight, waistCircumference, bmi });
-        return dayLog;
+      addDayLog: async (parent, { bodyWeight, waistCircumference, bmi }, context) => {
+        if (context.user) {
+            const dayLog = await DayLog.create({ ...bodyWeight, waistCircumference, bmi });
+
+            await User.findByIdAndUpdate(
+                { _id: context.user._id },
+                { $push: { stats: dayLog._id } },
+                { new: true }
+            );
+
+            return dayLog;
+        }
       },
       
       addProgressPics:  async (_, { file }) => {

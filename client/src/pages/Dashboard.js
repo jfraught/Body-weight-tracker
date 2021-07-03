@@ -10,7 +10,7 @@ const Dashboard = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    let date = [];
+    const date = [];
     const formatDate = (date) => {
         let dd = date.getDate();
         let mm = date.getMonth()+1;
@@ -30,14 +30,14 @@ const Dashboard = () => {
     }
 
     const [modalState, setModalState] = useState({ bodyWeight: 0, waistCircumference: 0 });
-    const[addDayLog, { error }] = useMutation(ADD_DAILY_STATS);
+    const[addDayLog] = useMutation(ADD_DAILY_STATS);
 
     const modalChange = event => {
         const { name, value } = event.target;
 
         setModalState({
             ...modalState,
-            [name]: value
+            [name]: parseInt(value)
         });    
     }
 
@@ -48,7 +48,9 @@ const Dashboard = () => {
             const { data } = await addDayLog({
                 variables: { ...modalState }
             });
+
             console.log(data);
+
         } catch (e) {
             console.error(e)
         }

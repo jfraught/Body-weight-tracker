@@ -6,6 +6,7 @@ type User {
    display_name: String
    email: String 
    password: String
+   stats: [DayLog]
 }
 
 type Profile {
@@ -22,6 +23,7 @@ type DayLog {
    bodyWeight: Int
    waistCircumference: Int
    bmi: Int
+   createdOn: String
 }
 
 type ProgressPics {
@@ -51,7 +53,7 @@ type Query {
     profile: Profile
     profiles: [Profile]
     daylog: DayLog
-    daylogs: [DayLog]
+    daylogs (display_name: String): DayLog
     
 }
 
@@ -59,7 +61,7 @@ type Query {
     login(email: String!, password: String!): Auth
     addUser(display_name: String!, email: String!, password: String!): Auth
     addProfile(height: Int!, goalWeight: Int!, goalWaist: Int!, goalBMI: Int!): Profile
-    addDayLog(bodyWeight: Int!, waistCircumference: Int!, bmi: Int): DayLog
+    addDayLog(bodyWeight: Int!, waistCircumference: Int!, bmi: Int, createdOn: String): User
    
 }
 

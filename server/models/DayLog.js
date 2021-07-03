@@ -12,6 +12,10 @@ const dailyMeasurementsSchema = new Schema ({
     bmi: {
         type: Number,
         default: 0
+    }, 
+    createdOn: {
+        type: Date,
+        default: Date.now
     }
 });
 

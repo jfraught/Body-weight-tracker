@@ -5,7 +5,7 @@ import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const Home = () => {
-    const [formState, setFormState] = useState({display_name: '', email: '', password: ''});
+    const [formState, setFormState] = useState({ display_name: '', email: '', password: '' });
     const [addUser, { error }] = useMutation(ADD_USER);
 
     const [homeShow, setHomeShow] = useState(false);
@@ -56,8 +56,8 @@ const Home = () => {
                         <>
                             <h2>Let's Start Your Journey!</h2>
                             <div>
-                                <label htmlFor='name' className="signup-label">Name:</label>
-                                <input type='input' name='name' placeholder="Display Name" className="form-input" onChange={handleChange} />
+                                <label htmlFor='display_name' className="signup-label">Name:</label>
+                                <input type='input' name='display_name' placeholder="Display Name" className="form-input" onChange={handleChange} />
                             </div>
 
                             <br/>
