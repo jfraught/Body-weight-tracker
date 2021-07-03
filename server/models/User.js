@@ -17,11 +17,10 @@ const userSchema = new Schema({
          required: true,
          minlength: 8
      },
-     stats:  [ 
+     dayLogs:  [ 
          {
-         
-       type: Schema.Types.ObjectId,
-       ref: 'DayLog'
+            type: Schema.Types.ObjectId,
+            ref: 'DayLog'
          } 
 ]
 },

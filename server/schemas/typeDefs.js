@@ -6,7 +6,7 @@ type User {
    display_name: String
    email: String 
    password: String
-   stats: [DayLog]
+   dayLogs: [DayLog]
 }
 
 type Profile {
@@ -50,10 +50,7 @@ type File {
 type Query {
     user(display_name: String!): User
     users: [User]
-    profile: Profile
-    profiles: [Profile]
-    daylog: DayLog
-    daylogs (display_name: String): DayLog
+    dayLogs(display_name: String!): [DayLog]
     
 }
 
@@ -63,10 +60,6 @@ type Query {
     addProfile(height: Int!, goalWeight: Int!, goalWaist: Int!, goalBMI: Int!): Profile
     addDayLog(bodyWeight: Int!, waistCircumference: Int!, bmi: Int, createdAt: String): DayLog
    
-}
-
-scalar Upload extend type Mutation {
-    addProgressPics( filename: Upload! ): File!
 }
 `
 
