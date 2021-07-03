@@ -21,6 +21,11 @@ const resolvers = {
             .populate('stats')
     },
 
+    stats: async(parent, { display_name }) => {
+        const params = display_name ? { display_name }: {};
+        return DayLog.find(params).sort({ createdAt: -1})
+    },
+
     profile: async (parent, {_id}) => {
         return Profile.findOne({_id})
     },
@@ -43,8 +48,8 @@ const resolvers = {
            //({})
           return { token, user };
       },
-      login: async (parent, { email, password} ) => {
-          const user = await User.findOne({ email });
+      login: async (parent, { display_name, password} ) => {
+          const user = await User.findOne({ display_name });
 
           if(!user) {
               throw new AuthenticationError('Incorrect credentials')

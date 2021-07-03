@@ -58,7 +58,7 @@ type Query {
 }
 
  type Mutation {
-    login(email: String!, password: String!): Auth
+    login(display_name: String!, password: String!): Auth
     addUser(display_name: String!, email: String!, password: String!): Auth
     addProfile(height: Int!, goalWeight: Int!, goalWaist: Int!, goalBMI: Int!): Profile
     addDayLog(bodyWeight: Int!, waistCircumference: Int!, bmi: Int, createdAt: String): DayLog

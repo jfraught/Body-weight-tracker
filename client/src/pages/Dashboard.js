@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import { Link, useParams } from 'react-router-dom';
+import {  useMutation } from '@apollo/react-hooks';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { ADD_DAILY_STATS } from '../utils/mutations';
-import { QUERY_USER } from '../utils/queries';
+
 import Auth from '../utils/auth';
 
 const Dashboard = props => {
@@ -34,8 +34,6 @@ const Dashboard = props => {
             console.error(e)
         }
     }
-
-    const { data } = useQuery(QUERY_USER)
 
     return (
         <section className="dashboard">
