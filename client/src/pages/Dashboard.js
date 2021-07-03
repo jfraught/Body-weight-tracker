@@ -1,37 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { ADD_DAILY_STATS } from '../utils/mutations';
+import { QUERY_USER } from '../utils/queries';
 import Auth from '../utils/auth';
 
-const Dashboard = () => {
+const Dashboard = props => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const date = [];
-    const formatDate = (date) => {
-        let dd = date.getDate();
-        let mm = date.getMonth()+1;
-        if(dd<10) {dd='0'+dd};
-        if(mm<10) {mm='0'+mm};
-        date = mm+'/'+dd;
-        return date;
-    }
-    const dateHandler = () => {
-        for (let i = 0; i < 7; i++) {
-            let d = new Date();
-            d.setDate(d.getDate() - i);
-            date.push(formatDate(d))
-        }
-        date.reverse();
-        return(date);
-    }
-
     const [modalState, setModalState] = useState({ bodyWeight: 0, waistCircumference: 0 });
-    const[addDayLog] = useMutation(ADD_DAILY_STATS);
-
+    const [addDayLog] = useMutation(ADD_DAILY_STATS);
     const modalChange = event => {
         const { name, value } = event.target;
 
@@ -40,7 +21,6 @@ const Dashboard = () => {
             [name]: parseInt(value)
         });    
     }
-
     const modalSubmit = async event => {
         event.preventDefault();
 
@@ -48,15 +28,14 @@ const Dashboard = () => {
             const { data } = await addDayLog({
                 variables: { ...modalState }
             });
-
             console.log(data);
-
+            return data;
         } catch (e) {
             console.error(e)
         }
     }
 
-    dateHandler();
+    const { data } = useQuery(QUERY_USER)
 
     return (
         <section className="dashboard">
@@ -235,7 +214,7 @@ const Dashboard = () => {
                 animation={false}
               >
                 <Modal.Header>
-                  <Modal.Title>Enter Your Measurments for {date[6]}</Modal.Title>
+                  <Modal.Title>Enter Your Measurments!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={modalSubmit}>

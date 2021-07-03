@@ -6,6 +6,13 @@ export const QUERY_USER = gql`
             _id
             display_name
             email
+            stats {
+                _id
+                bmi
+                bodyWeight
+                waistCircumference
+                createdAt
+            }
         }
     }
 `;
