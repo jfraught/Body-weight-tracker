@@ -34,6 +34,9 @@ const resolvers = {
     daylogs: async () => {
         return DayLog.find();
     },
+    daylog: async () => {
+        return DayLog.findOne({_id})
+    }
 
    // uploads: (parent, args) => {}
 

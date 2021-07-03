@@ -17,7 +17,7 @@ const Home = () => {
 
         setFormState({
             ...formState,
-            [name]: value
+            [name]:value
         });
     };
     

@@ -39,7 +39,7 @@ const Dashboard = () => {
 
         setModalState({
             ...modalState,
-            [name]: value
+            [name]: parseInt(value)
         });    
     }
 
@@ -90,7 +90,9 @@ const Dashboard = () => {
                                     <th>06/28</th>
                                     <th>06/29</th>
                                     <th>06/30</th>
-                                    <th>Today</th>
+                                    <th>Today
+                                        
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
