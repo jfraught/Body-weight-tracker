@@ -6,6 +6,7 @@ type User {
    display_name: String
    email: String 
    password: String
+   dayLogs: [DayLog]
 }
 
 type Profile {
@@ -18,10 +19,11 @@ type Profile {
 }
 
 type DayLog {
-    _id: ID
+   _id: ID
    bodyWeight: Int
    waistCircumference: Int
-   bmi: Int 
+   bmi: Int
+   createdAt: String
 }
 
 type ProgressPics {
@@ -38,27 +40,38 @@ type Auth {
     token: ID
     user: User
 }
-
+ 
+type File {
+    filename: String!
+}
 
 
 
 type Query {
-    user: User
+    user(display_name: String!): User
     users: [User]
-    profile: Profile
-    profiles: [Profile]
-    daylog: DayLog
-    daylogs: [DayLog]
-
+    dayLogs(display_name: String!): [DayLog]
+    
 }
 
-type Mutation {
-    login(email: String!, password: String!): Auth
+ type Mutation {
+    login(display_name: String!, password: String!): Auth
     addUser(display_name: String!, email: String!, password: String!): Auth
     addProfile(height: Int!, goalWeight: Int!, goalWaist: Int!, goalBMI: Int!): Profile
-    addDayLog( bodyWeight: Int!, waistCircumference: Int!, bmi:Int!): DayLog
-    addProgressPics(profileId: ID!, initialFront: String!, initialSide: String!, initialBack: String!,  currentFront: String! ,  currentSide: String! , currentBack: String! ): Profile
+    addDayLog(bodyWeight: Int!, waistCircumference: Int!, bmi: Int, createdAt: String): DayLog
+   
 }
 `
 
 module.exports= typeDefs;
+
+/**old apollo-upload-client way
+ * type File {
+    filename: String!
+}
+ addProgressPics( initialFront: Upload! ): File!
+}
+
+
+ * 
+ */

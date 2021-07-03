@@ -1,53 +1,37 @@
-const {User, Profile, DayLog} = require('../models');
+const {User, DayLog } = require('../models');
 const { AuthenticationError} = require('apollo-server-express');
 const { signToken } = require('../utils/authorize');
 
 const resolvers = {
   Query: {
-      user: async (parent, args, context) => {
-          if (context.user) {
-              const userData = await User.findOne({_id: context.user._id})
-              .select('-__v -password')
-              
-              return userData
-          }
-          throw new AuthenticationError('Not logged in');
+    user: async (parent, { display_name }) => {
+        return User.findOne({ display_name })
+            .select('-v -password')
+            .populate('dayLogs')
     },
+    
     users: async () => {
-        return User.find();
+        return User.find()
+            .select('-v -password')
+            .populate('dayLogs')
     },
 
-    profile: async (parent, {_id}) => {
-    return    Profile.findOne({_id})
-    },
-    profiles: async () => {
-        return Profile.find();
-    },
-
-    daylog: async(parent, {_id}) => {
-        return DayLog.findOne({_id})
-    },
-    daylogs: async () => {
-        return DayLog.find();
+    dayLogs: async (parent, { display_name }) => {
+        const params = display_name ? { display_name } : {};
+        return DayLog.find(params)
+            .populate('dayLogs');
     }
-
-
-
-  },  
-  // mutation logic
+  },
+   
   Mutation: {
       addUser: async (parent, args) => {
           const user = await User.create(args);
           const token = signToken(user)
-
-<<<<<<< HEAD
-          return  {token, user} ;
-=======
-          return ({ token, user });
->>>>>>> cc0bba70b56c5750d48c5b2714750edfa45ace53
+           //({})
+          return { token, user };
       },
-      login: async (parent, { email, password} ) => {
-          const user = await User.findOne({ email });
+      login: async (parent, { display_name, password} ) => {
+          const user = await User.findOne({ display_name });
 
           if(!user) {
               throw new AuthenticationError('Incorrect credentials')
@@ -59,18 +43,44 @@ const resolvers = {
           }
 
           const token = signToken(user);
-          return ({ token, user });
+          // ({})
+          return { token, user };
 
       },
-      addProfile: async (parent, {height, goalWeight, goalWaist, goalBMI}) => {
-          const profile = Profile.create({height, goalWeight, goalWaist, goalBMI});
-          return profile;
-      },
-      addDayLog: async (parent, {bodyWeight, waistCircumference, bmi}) => {
-const dayLog = DayLog.create({bodyWeight, waistCircumference, bmi});
-return dayLog;
-      },
+      addDayLog: async (parent, args, context) => {
+        if (context.user) {
+            const dayLog = await DayLog.create({ ...args, display_name: context.user.display_name });
+
+            await User.findByIdAndUpdate(
+                { _id: context.user._id },
+                { $push: { stats: dayLog._id } },
+                { new: true }
+            );
+
+            return dayLog;
+        }
+      }   
   }
 };
 
 module.exports = resolvers;
+
+
+
+
+/** (parent, args) => {
+        return args.file.then(file => {
+            //Contents of Upload scalar: https://github.com/jaydenseric/graphql-upload#class-graphqlupload
+            //file.createReadStream() is a readable node stream that contains the contents of the uploaded file
+            //node stream api: https://nodejs.org/api/stream.html
+            return file;
+          });
+        }, original from apollo-upload-client*/
+
+        // graphql upload boiler
+        /** async (root, { name, file }) => {
+        const { filename, mimetype, createReadStream } = await file;
+        const stream = createReadStream();
+        // Promisify the stream and store the file, then ...
+        return true;
+      }, */

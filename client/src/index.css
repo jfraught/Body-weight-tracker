@@ -86,6 +86,7 @@ figcaption {
 table {
   margin: auto;
   margin-bottom: 5vh;
+  min-width: 60%;
 }
 
 table, td {
@@ -101,6 +102,12 @@ th {
 
 td {
   padding: 1vh;
+}
+
+.logo {
+  display: block;
+  margin-left:auto;
+  margin-right:auto
 }
 
 .hero {
@@ -177,6 +184,7 @@ td {
 .step h3 {
   padding-top: 5vh;
   padding-bottom: 5vh;
+  margin-bottom: 3vh;
   font-size: 4vh;
   flex: 1 30%;
 }
@@ -186,11 +194,11 @@ td {
   flex-wrap: wrap;
   align-items: center;
   flex: 2 70%;
+  margin-bottom: 5vh;
 }
 
 .step-img {
   flex: 1 12%;
-  margin-right: 20px;
   padding: 1vh;
 }
 
@@ -252,6 +260,11 @@ td {
   font-weight: bold;
 }
 
+.auth-link {
+  text-decoration: none;
+  color: blue;
+}
+
 .photo-section {
   text-align: center;
   margin-bottom: 5vh;
@@ -303,5 +316,27 @@ td {
   font-size: 3.5vh;
   font-weight: bold;
   color: red;
+}
+
+#modalButton-submit {
+  float: right;
+  margin:5vh 3vw;
+  font-weight: bold;
+  background: blue;
+  color: white;
+  padding: 1.2vh;
+  text-decoration: none;
+  border-radius: 1.5vh;
+}
+
+#modalButton-close {
+  float: right;
+  margin:5vh 0vh;
+  font-weight: bold;
+  background: #212529;
+  color: white;
+  padding: 1.2vh;
+  text-decoration: none;
+  border-radius: 1.5vh;
 }
 
