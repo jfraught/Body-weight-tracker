@@ -42,8 +42,8 @@ const resolvers = {
       addUser: async (parent, args) => {
           const user = await User.create(args);
           const token = signToken(user)
-
-          return ({ token, user });
+           //({})
+          return { token, user };
       },
       login: async (parent, { email, password} ) => {
           const user = await User.findOne({ email });
@@ -58,16 +58,17 @@ const resolvers = {
           }
 
           const token = signToken(user);
-          return ({ token, user });
+          // ({})
+          return { token, user };
 
       },
       addProfile: async (parent, {height, goalWeight, goalWaist, goalBMI}) => {
           const profile = Profile.create({height, goalWeight, goalWaist, goalBMI});
           return profile;
       },
-      addDayLog: async (parent, { bodyWeight, waistCircumference, bmi }, context) => {
+      addDayLog: async (parent, args, context) => {
         if (context.user) {
-            const dayLog = await DayLog.create({ ...bodyWeight, waistCircumference, bmi });
+            const dayLog = await DayLog.create({ ...args, display_name: context.user.display_name });
 
             await User.findByIdAndUpdate(
                 { _id: context.user._id },

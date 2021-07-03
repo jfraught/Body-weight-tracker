@@ -17,13 +17,20 @@ const userSchema = new Schema({
          required: true,
          minlength: 8
      },
-     stats: [
+     stats:  [ 
          {
-             type: Schema.Types.ObjectId,
-             ref: 'DayLog'
-         }
-     ]
-})
+         
+       type: Schema.Types.ObjectId,
+       ref: 'DayLog'
+         } 
+]
+},
+{
+    toJSON: {
+        virtuals: true
+    }
+}
+)
 
 // middleware pre-save for creating the hashed password
 userSchema.pre('save', async function(next) {
