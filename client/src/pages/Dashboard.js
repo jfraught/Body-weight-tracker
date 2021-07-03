@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { ADD_DAILY_STATS } from '../utils/mutations';
+import {QUERY_USER} from '../utils/queries'
 import Auth from '../utils/auth';
 
 const Dashboard = () => {
@@ -37,7 +38,7 @@ const Dashboard = () => {
 
         setModalState({
             ...modalState,
-            [name]: value
+            [name]: parseInt(value)
         });    
     }
 
@@ -49,10 +50,14 @@ const Dashboard = () => {
                 variables: { ...modalState }
             });
             console.log(data);
+            return data;
         } catch (e) {
             console.error(e)
         }
     }
+
+    const { data } = useQuery(QUERY_USER);
+    console.log(data);
 
     dateHandler();
 
