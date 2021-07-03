@@ -9,18 +9,26 @@ const { URL } = require('../config/connection')
 
 const resolvers = {
   Query: {
-    user: async (parent, args, context) => {
+   /* user: async (parent, args, context) => {
         if (context.user) {
             const userData = await User.findOne({_id: context.user.display_name})
             .select('-__v -password')
+            .populate('stats')
             
             return userData
         }
         throw new AuthenticationError('Not logged in');
+    },*/
+    user: async (parent, {display_name}) => {
+   return User.findOne({ display_name })
+            .select('-__v -password')
+            .populate('stats')
     },
     
     users: async () => {
-        return User.find();
+        return User.find()
+        .populate('stats')
+        .select('-__v -password')
     },
 
     profile: async (parent, {_id}) => {
