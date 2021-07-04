@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { ADD_DAILY_STATS } from '../utils/mutations';
 import Auth from '../utils/auth';
-
+import DailyStats from '../components/DayStats';
 const Dashboard = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -49,7 +49,7 @@ const Dashboard = () => {
                 variables: { ...modalState }
             });
 
-            console.log(data);
+            //console.log(data);
 
         } catch (e) {
             console.error(e)
@@ -65,155 +65,16 @@ const Dashboard = () => {
                     <h2>Dashboard</h2>
             
                     <div>
-                        <ul>
-                            <li>Pounds From Goal: <span>**</span></li>
-                            <li>Inches From Goal: <span>*</span></li>
-                            <li>BMI Points From Goal: <span>**</span></li>
-                        </ul>
+                       
             
-                        <button type="button" onClick={handleShow}>
+                 <button type="button" onClick={handleShow}>
                             Add Daily Stats
                         </button>
                     </div>
             
-                    <div className="mt-5">
-                        <h3>Body Weight - Last 7 days</h3>
-            
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>06/25</th>
-                                    <th>06/26</th>
-                                    <th>06/27</th>
-                                    <th>06/28</th>
-                                    <th>06/29</th>
-                                    <th>06/30</th>
-                                    <th>Today</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Today</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div><br/>
-            
-                    <div>
-                        <h3>Waist Circumference - Last 7 days</h3>
-            
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>06/25</th>
-                                    <th>06/26</th>
-                                    <th>06/27</th>
-                                    <th>06/28</th>
-                                    <th>06/29</th>
-                                    <th>06/30</th>
-                                    <th>Today</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Today</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div><br/>
-            
-                    <div>
-                        <h3>BMI - Last 7 days</h3>
-            
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>06/25</th>
-                                    <th>06/26</th>
-                                    <th>06/27</th>
-                                    <th>06/28</th>
-                                    <th>06/29</th>
-                                    <th>06/30</th>
-                                    <th>Today</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Today</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-            
-                    <div className="photo-section">
-                        <div className="top-pics">
-                            <figure>
-                                <img
-                                    src={require(`../assets/images/Landing/1.png`).default}
-                                    alt=""
-                                    height="300vh"
-                                    className="p-2"
-                                />
-                                <figcaption>Start</figcaption>
-                            </figure>
-                            <figure>
-                                <img
-                                    src={require(`../assets/images/Landing/1.png`).default}
-                                    alt=""
-                                    height="300vh"
-                                    className="p-2"
-                                />
-                                <figcaption>Current</figcaption>
-                            </figure>
-                        </div>
-                        <div>
-                            <img
-                                src={require(`../assets/images/Landing/1.png`).default}
-                                alt=""
-                                height="300vh"
-                                className="p-2"
-                            />
-                            <img
-                                src={require(`../assets/images/Landing/1.png`).default}
-                                alt=""
-                                height="300vh"
-                                className="p-2"
-                            />
-                        </div>
-                        <div>
-                            <img
-                                src={require(`../assets/images/Landing/1.png`).default}
-                                alt=""
-                                height="300vh"
-                                className="p-2"
-                            />
-                            <img
-                                src={require(`../assets/images/Landing/1.png`).default}
-                                alt=""
-                                height="300vh"
-                                className="p-2"
-                            />
-                        </div>
-                    </div>
-            </>
+                   
+                        
+                    </>
             ) : (
                 <>
                     <div className="auth-fail">
@@ -257,8 +118,10 @@ const Dashboard = () => {
                     </Form>
                 </Modal.Body>
               </Modal>
-            )}  
+            )} 
+             <DailyStats />
         </section>
+        
     );
 };
 

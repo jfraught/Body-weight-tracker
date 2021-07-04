@@ -74,6 +74,8 @@ const Home = () => {
                                 <input type='password' name='password' placeholder="Password" className="form-input" onChange={handleChange} />
                             </div>
 
+                           
+
                             <br/>
 
                             {error && <div className="signup-error">Your signup went wrong ☹️</div>}
