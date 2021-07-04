@@ -8,7 +8,7 @@ const { authMiddleware } = require('./utils/authorize');
 require('dotenv').config();
 // schema files
 const { typeDefs, resolvers } = require('./schemas')
-const {graphqlUploadExpress } = require('graphql-upload');
+
 
 
 // mongoose connection logic
@@ -36,9 +36,9 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/build')));
   }
   
-  /*app.get('*',(req, res) => {
+  app.get('*',(req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
-  });*/
+  });
 
 // port connection
 db.once('open', () => {
