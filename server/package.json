@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "nodemon"
   },
-  "author": "",
+  "author": "node server.js",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.7"
