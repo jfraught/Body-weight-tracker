@@ -30,6 +30,18 @@ const resolvers = {
         .populate('stats')
         .select('-__v -password')
     },
+    me: async (parent, args, context) => {
+
+        if (context.user) { 
+        const userData = await User.findOne({ _id: context.user._id })
+        .select('-__v -password')
+        .populate('stats')
+        
+
+        return userData;
+        }
+        throw new AuthenticationError('not logged in');
+    },
 
     profile: async (parent, {_id}) => {
         return Profile.findOne({_id})

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { ADD_DAILY_STATS } from '../../utils/mutations';
+import { GET_DAYLOGS } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 
-const DailyStats = () => {
+const StatsModal = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -33,6 +34,7 @@ const DailyStats = () => {
     const [modalState, setModalState] = useState({ bodyWeight: 0, waistCircumference: 0, display_name: " " });
     const[addDayLog] = useMutation(ADD_DAILY_STATS);
     const [pageState, setPageState] = useState( " " )
+    const { loading, data } = useQuery(GET_DAYLOGS);
 
     const modalChange = event => {
         const { name, naMe, value, value2 } = event.target;
@@ -145,4 +147,4 @@ const DailyStats = () => {
     
 };
 
-export default DailyStats;
+export default StatsModal;

@@ -51,6 +51,7 @@ type File {
 type Query {
     user(display_name: String!): User
     users: [User]
+    me: User
     profile: Profile
     profiles: [Profile]
     daylog: DayLog

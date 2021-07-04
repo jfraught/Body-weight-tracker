@@ -6,9 +6,31 @@ export const QUERY_USER = gql`
             _id
             display_name
             email
+            stats {
+                bodyWeight
+                waistCircumference
+                createdAt
+                display_name 
+            }
         }
     }
 `;
+
+export const QUERY_ME = gql `
+{
+    me {
+           _id
+            display_name
+            email
+            stats {
+                bodyWeight
+                waistCircumference
+                createdAt
+                display_name 
+            }  
+        }
+}
+`
 
 export const GET_DAYLOGS = gql `
 query daylogs($display_name: String!) {
