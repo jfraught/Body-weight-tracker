@@ -1,18 +1,20 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { ApolloProvider, InMemoryCache } from '@apollo/react-hooks';
-import ApolloClient from 'apollo-boost';
-//import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+//import { ApolloProvider, InMemoryCache } from '@apollo/react-hooks';
+//import ApolloClient from 'apollo-boost';
+import {  ApolloClient } from 'apollo-boost';
+import { ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/react-hooks';
+import  { setContext } from  '@apollo/client/link/context';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
-import  { setContext } from  '@apollo/client/link/context';
 
-/*const httpLink = createHttpLink({
+
+const httpLink = createHttpLink({ 
   uri: '/graphql',
-  });
+ } );
 
   const authLink = setContext((_, { headers })=> {
     const token = localStorage.getItem('id_token');
@@ -28,10 +30,10 @@ import  { setContext } from  '@apollo/client/link/context';
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
  });
-*/
 
 
-const client = new ApolloClient({
+
+/*const client = new ApolloClient({
 
 
   request: operation => {
@@ -48,7 +50,7 @@ const client = new ApolloClient({
   
 
   
-})
+})*/
 
 function App() {
   return (
@@ -58,7 +60,7 @@ function App() {
         <Header />
         <div>
           <Route exact path ='/' component={Home} />
-          <Route exact path ='/dashboard' component={Dashboard} />
+          <Route exact path ='/dashboard' component={Dashboard}  />
           <Route exact path='/login' component={Login} />
         </div>
         <Footer />
