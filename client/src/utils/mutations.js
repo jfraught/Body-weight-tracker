@@ -25,12 +25,14 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_DAILY_STATS = gql`
-    mutation addDayLog($bodyWeight: Int!, $waistCircumference: Int!, $bmi: Int, $createdAt: String) {
-        addDayLog(bodyWeight: $bodyWeight, waistCircumference: $waistCircumference, bmi: $bmi, createdAt: $createdAt) {
+    mutation addDayLog($bodyWeight: Int!, $waistCircumference: Int!, $bmi: Int, $createdAt: String, $display_name: String) {
+        addDayLog(bodyWeight: $bodyWeight, waistCircumference: $waistCircumference, bmi: $bmi, createdAt: $createdAt, display_name: $display_name) {
             _id
             bodyWeight
             waistCircumference
             bmi
+            createdAt
+            display_name
         }
     }
 `;

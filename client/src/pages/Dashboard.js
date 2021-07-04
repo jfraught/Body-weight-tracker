@@ -29,15 +29,16 @@ const Dashboard = () => {
         return(date);
     }
 
-    const [modalState, setModalState] = useState({ bodyWeight: 0, waistCircumference: 0 });
+    const [modalState, setModalState] = useState({ bodyWeight: 0, waistCircumference: 0, display_name: " " });
     const[addDayLog] = useMutation(ADD_DAILY_STATS);
 
     const modalChange = event => {
-        const { name, value } = event.target;
+        const { name, naMe, value, value2 } = event.target;
 
         setModalState({
             ...modalState,
-            [name]: parseInt(value)
+            [name]: parseInt(value),
+            [naMe]: value2
         });    
     }
 
@@ -48,8 +49,8 @@ const Dashboard = () => {
             const { data } = await addDayLog({
                 variables: { ...modalState }
             });
-
-            //console.log(data);
+             
+            console.log(data);
 
         } catch (e) {
             console.error(e)
@@ -109,6 +110,12 @@ const Dashboard = () => {
                             <Form.Label>Waist Circumference</Form.Label>
                             <Form.Control type="input" placeholder="Wiast Circumference" name="waistCircumference" onChange={modalChange} />
                         </Form.Group>
+
+                        <Form.Group>
+                            <Form.Label>Your Name</Form.Label>
+                            <Form.Control type="input" placeholder="Your Name" name="display_name" onChange={modalChange} />
+                        </Form.Group>
+
                         <Button id="modalButton-submit" type="submit">
                             Submit Your Measurments
                         </Button>
