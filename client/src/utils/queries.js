@@ -9,3 +9,14 @@ export const QUERY_USER = gql`
         }
     }
 `;
+
+export const GET_DAYLOGS = gql `
+query daylogs($display_name: String!) {
+    daylogs(display_name: $display_name) {
+        bodyWeight
+        waistCircumference
+        createdAt
+        display_name
+    }
+}
+`;
