@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {  useMutation } from '@apollo/react-hooks';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { ADD_DAILY_STATS } from '../utils/mutations';
@@ -28,6 +28,8 @@ const Dashboard = props => {
             const { data } = await addDayLog({
                 variables: { ...modalState }
             });
+
+            console.log({...modalState})
             console.log(data);
             return data;
         } catch (e) {
@@ -51,93 +53,6 @@ const Dashboard = props => {
                         <button type="button" onClick={handleShow}>
                             Add Daily Stats
                         </button>
-                    </div>
-            
-                    <div className="mt-5">
-                        <h3>Body Weight - Last 7 days</h3>
-            
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>06/25</th>
-                                    <th>06/26</th>
-                                    <th>06/27</th>
-                                    <th>06/28</th>
-                                    <th>06/29</th>
-                                    <th>06/30</th>
-                                    <th>Today</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Today</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div><br/>
-            
-                    <div>
-                        <h3>Waist Circumference - Last 7 days</h3>
-            
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>06/25</th>
-                                    <th>06/26</th>
-                                    <th>06/27</th>
-                                    <th>06/28</th>
-                                    <th>06/29</th>
-                                    <th>06/30</th>
-                                    <th>Today</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Today</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div><br/>
-            
-                    <div>
-                        <h3>BMI - Last 7 days</h3>
-            
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>06/25</th>
-                                    <th>06/26</th>
-                                    <th>06/27</th>
-                                    <th>06/28</th>
-                                    <th>06/29</th>
-                                    <th>06/30</th>
-                                    <th>Today</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Today</td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
             
                     <div className="photo-section">

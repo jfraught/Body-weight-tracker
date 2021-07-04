@@ -31,6 +31,7 @@ export const ADD_DAILY_STATS = gql`
             bodyWeight
             waistCircumference
             bmi
+            createdAt
         }
     }
 `;

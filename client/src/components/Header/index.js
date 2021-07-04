@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/react-hooks'
 import Auth from '../../utils/auth';
+import { QUERY_USER } from '../../utils/queries';
 
 const Header = () => {
+    //const { data } = useQuery(QUERY_USER);
+    //console.log(data);
 
     const logout = event => {
         event.preventDefault();
@@ -16,7 +20,7 @@ const Header = () => {
             <nav className="pt-2">
                 {Auth.loggedIn() ? (
                     <>
-                        <Link to="/dashboard" className="px-3">Dashboard</Link>
+                        <Link to={`/dashboard`} className="px-3">Dashboard</Link>
                         <a href="/" onClick={logout} className="px-3">Logout</a>
                     </>
                 ) : (

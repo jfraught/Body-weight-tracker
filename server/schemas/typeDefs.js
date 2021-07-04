@@ -45,13 +45,10 @@ type File {
     filename: String!
 }
 
-
-
 type Query {
     user(display_name: String!): User
     users: [User]
-    dayLogs(display_name: String!): [DayLog]
-    
+    dayLogs(display_name: String!): DayLog
 }
 
  type Mutation {
