@@ -37,6 +37,13 @@ const resolvers = {
 
     profiles: async () => {
         return Profile.find();
+    },
+    daylog: async(parent, {_id}) => {
+        return DayLog.findOne({_id})
+    },
+    daylogs: async (parent,  {display_name}) => {
+        const params = display_name ? {display_name} :{};
+        return DayLog.find(params).sort({ createdAt: -1 });
     }
 
    // uploads: (parent, args) => {}

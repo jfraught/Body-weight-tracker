@@ -18,6 +18,10 @@ const dailyMeasurementsSchema = new Schema ({
         type: Date,
         default: Date.now,
         get: timestamp => todaysDate(timestamp)
+    }, 
+    display_name: {
+        type: String,
+        required: true
     }
 });
 

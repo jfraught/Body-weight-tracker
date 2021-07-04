@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/bodytrack', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/bodytrackkk', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
