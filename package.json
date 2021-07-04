@@ -5,8 +5,8 @@
   "scripts": {
     "start": " node server/server.js",
     "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd client && npm run build"
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "repository": {
     "type": "git",
