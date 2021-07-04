@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "node server/server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server/server.js",
     "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "test": "echo \"Error: no test specified\" && exit 1"
     

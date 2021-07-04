@@ -15,18 +15,12 @@ const db = require('./config/connection');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-app.use(
-    graphqlUploadExpress({
-        maxFileSize: 30000000,
-        maxFiles: 18,
-    })  
-);
+
 
 // Apollo server instance
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-    uploads: false,
      context: authMiddleware
 });
 
