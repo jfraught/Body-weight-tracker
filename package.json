@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "main/server.js",
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start": "node server/server.js",
     "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
