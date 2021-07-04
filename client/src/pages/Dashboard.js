@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+
 import { Link, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/react-hooks';
+
 import { Button, Modal, Form } from 'react-bootstrap';
 import { ADD_DAILY_STATS } from '../utils/mutations';
 import { QUERY_USER } from '../utils/queries';
