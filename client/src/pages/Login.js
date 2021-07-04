@@ -4,7 +4,7 @@ import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const Login = props => {
-    const [formState, setFormState] = useState({display_name: '', password: ''});
+    const [formState, setFormState] = useState({ display_name: '', password: '' });
     const [login, { error }] = useMutation(LOGIN_USER);
 
     const handleChange = event => {
@@ -25,6 +25,10 @@ const Login = props => {
             });
 
             Auth.login(data.login.token);
+
+            let display_name = data.login.user.display_name
+            window.location.assign(`/dashboard/${display_name}`)
+            
         } catch (e) {
             console.error(e);
         }
@@ -40,14 +44,26 @@ const Login = props => {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor='display_name' className='signup-label'>Diaplay Name:</label>
-                    <input type='text' name='display_name'  placeholder="Your Display Name" className="form-input" onChange={handleChange} />
+                    <input 
+                    type='text' 
+                    name='display_name'  
+                    placeholder="Your Display Name" 
+                    className="form-input"
+                    id="display_name" 
+                    onChange={handleChange} />
                 </div>
 
                 <br/>
 
                 <div>
                     <label htmlFor='password' className='signup-label'>Password:</label>
-                    <input type='password' name='password' placeholder="********" className='form-input' onChange={handleChange} />
+                    <input 
+                    type='password' 
+                    name='password' 
+                    placeholder="********" 
+                    className='form-input' 
+                    id="password"
+                    onChange={handleChange} />
                 </div>
             
                 <br/>

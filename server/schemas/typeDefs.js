@@ -40,15 +40,11 @@ type Auth {
 }
 
 
-
-
 type Query {
     user: User
     users: [User]
-    profile: Profile
-    profiles: [Profile]
-    daylog: DayLog
-    dayLogs: [DayLog]
+
+    dayLogs(display_name: String!): DayLog
 
 }
 
