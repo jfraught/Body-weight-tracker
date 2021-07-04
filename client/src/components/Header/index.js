@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link,  } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 const Header = () => {
-
     const logout = event => {
         event.preventDefault();
         Auth.logout();
@@ -16,7 +15,7 @@ const Header = () => {
             <nav className="pt-2">
                 {Auth.loggedIn() ? (
                     <>
-                        <Link to="/dashboard" className="px-3">Dashboard</Link>
+                        <Link to={`/dashboard`} className="px-3">Dashboard</Link>
                         <a href="/" onClick={logout} className="px-3">Logout</a>
                     </>
                 ) : (

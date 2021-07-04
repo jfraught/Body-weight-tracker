@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const LOGIN_USER = gql`
-    mutation login($email: String!, $password: String!) {
-        login(email: $email, password: $password) {
+    mutation login($display_name: String!, $password: String!) {
+        login(display_name: $display_name, password: $password) {
             token
             user {
                 _id
@@ -25,12 +25,13 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_DAILY_STATS = gql`
-    mutation addDayLog($bodyWeight: Int!, $waistCircumference: Int!, $bmi: Int) {
-        addDayLog(bodyWeight: $bodyWeight, waistCircumference: $waistCircumference, bmi: $bmi) {
+    mutation addDayLog($bodyWeight: Int!, $waistCircumference: Int!, $bmi: Int, $createdAt: String) {
+        addDayLog(bodyWeight: $bodyWeight, waistCircumference: $waistCircumference, bmi: $bmi, createdAt: $createdAt) {
             _id
             bodyWeight
             waistCircumference
             bmi
+            createdAt
         }
     }
 `;

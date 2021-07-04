@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const todaysDate = require('../utils/formatTimeStamp');
 
 const dailyMeasurementsSchema = new Schema ({
     bodyWeight: {
@@ -12,6 +13,11 @@ const dailyMeasurementsSchema = new Schema ({
     bmi: {
         type: Number,
         default: 0
+    }, 
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        get: timestamp => todaysDate(timestamp)
     }
 });
 

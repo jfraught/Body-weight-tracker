@@ -1,39 +1,28 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/react-hooks';
+import { Link, useParams } from 'react-router-dom';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { ADD_DAILY_STATS } from '../utils/mutations';
+import { QUERY_USER } from '../utils/queries';
+
+
 import Auth from '../utils/auth';
 
-const Dashboard = () => {
+const Dashboard = props => {
+    const { display_name: userParam } = useParams();
+    const { data } = useQuery(userParam ? QUERY_USER : QUERY_USER, {
+        variables: { display_name: userParam }
+    });
+
+    const user = data?.user
+    console.log(user);
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    let date = [];
-    const formatDate = (date) => {
-        let dd = date.getDate();
-        let mm = date.getMonth()+1;
-        if(dd<10) {dd='0'+dd};
-        if(mm<10) {mm='0'+mm};
-        date = mm+'/'+dd;
-        return date;
-    }
-    const dateHandler = () => {
-        for (let i = 0; i < 7; i++) {
-            let d = new Date();
-            d.setDate(d.getDate() - i);
-            date.push(formatDate(d))
-        }
-        date.reverse();
-        return(date);
-    }
-    
-    const [modalState, setModalState] = useState({ bodyWeight:0, waistCircumference: 0 });
-    
-    const[addDayLog, { error }] = useMutation(ADD_DAILY_STATS);
-
-    
+    const [modalState, setModalState] = useState({ bodyWeight: 0, waistCircumference: 0 });
+    const [addDayLog] = useMutation(ADD_DAILY_STATS);
     const modalChange = event => {
         const { name, value } = event.target;
 
@@ -42,7 +31,6 @@ const Dashboard = () => {
             [name]: parseInt(value)
         });    
     }
-
     const modalSubmit = async event => {
         event.preventDefault();
 
@@ -52,13 +40,13 @@ const Dashboard = () => {
                 variables: { ...modalState }
                 
             });
+
             console.log(data);
+            return data;
         } catch (e) {
             console.error(e)
         }
     }
-
-    dateHandler();
 
     return (
         <section className="dashboard">
@@ -77,95 +65,8 @@ const Dashboard = () => {
                             Add Daily Stats
                         </button>
                     </div>
-            
-                    <div className="mt-5">
-                        <h3>Body Weight - Last 7 days</h3>
-            
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>06/25</th>
-                                    <th>06/26</th>
-                                    <th>06/27</th>
-                                    <th>06/28</th>
-                                    <th>06/29</th>
-                                    <th>06/30</th>
-                                    <th>Today
-                                        
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Today</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div><br/>
-            
-                    <div>
-                        <h3>Waist Circumference - Last 7 days</h3>
-            
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>06/25</th>
-                                    <th>06/26</th>
-                                    <th>06/27</th>
-                                    <th>06/28</th>
-                                    <th>06/29</th>
-                                    <th>06/30</th>
-                                    <th>Today</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Today</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div><br/>
-            
-                    <div>
-                        <h3>BMI - Last 7 days</h3>
-            
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>06/25</th>
-                                    <th>06/26</th>
-                                    <th>06/27</th>
-                                    <th>06/28</th>
-                                    <th>06/29</th>
-                                    <th>06/30</th>
-                                    <th>Today</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Today</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+
+                    
             
                     <div className="photo-section">
                         <div className="top-pics">
@@ -239,7 +140,7 @@ const Dashboard = () => {
                 animation={false}
               >
                 <Modal.Header>
-                  <Modal.Title>Enter Your Measurments for {date[6]}</Modal.Title>
+                  <Modal.Title>Enter Your Measurments!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={modalSubmit}>

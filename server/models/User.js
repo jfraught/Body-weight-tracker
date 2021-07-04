@@ -3,7 +3,8 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
     display_name:  {
-        type: String
+        type: String,
+        unique: true
     },
     email: {
         type: String,
@@ -15,8 +16,20 @@ const userSchema = new Schema({
          type: String,
          required: true,
          minlength: 8
-     }
-})
+     },
+     dayLogs:  [ 
+         {
+            type: Schema.Types.ObjectId,
+            ref: 'DayLog'
+         } 
+]
+},
+{
+    toJSON: {
+        virtuals: true
+    }
+}
+)
 
 // middleware pre-save for creating the hashed password
 userSchema.pre('save', async function(next) {
