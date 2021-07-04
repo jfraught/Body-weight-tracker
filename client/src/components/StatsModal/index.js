@@ -33,8 +33,8 @@ const StatsModal = () => {
 
     const [modalState, setModalState] = useState({ bodyWeight: 0, waistCircumference: 0, display_name: " " });
     const[addDayLog] = useMutation(ADD_DAILY_STATS);
-    const [pageState, setPageState] = useState( " " )
-    const { loading, data } = useQuery(GET_DAYLOGS);
+    
+    
 
     const modalChange = event => {
         const { name, naMe, value, value2 } = event.target;
