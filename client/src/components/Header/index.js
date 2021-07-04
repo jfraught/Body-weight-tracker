@@ -1,13 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useQuery } from '@apollo/react-hooks'
+import { Link,  } from 'react-router-dom';
 import Auth from '../../utils/auth';
-import { QUERY_USER } from '../../utils/queries';
 
 const Header = () => {
-    //const { data } = useQuery(QUERY_USER);
-    //console.log(data);
-
     const logout = event => {
         event.preventDefault();
         Auth.logout();

@@ -32,7 +32,7 @@ function App() {
             <div>
               <Switch>
                 <Route exact path ='/' component={Home} />
-                <Route exact path ="/dashboard:display_name?" component={Dashboard} />
+                <Route exact path ="/dashboard/:display_name?" component={Dashboard} />
                 <Route exact path='/login' component={Login} />
               </Switch>
             </div>

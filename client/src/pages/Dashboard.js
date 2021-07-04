@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import {  useMutation } from '@apollo/react-hooks';
+import { Link, useParams } from 'react-router-dom';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { ADD_DAILY_STATS } from '../utils/mutations';
+import { QUERY_USER } from '../utils/queries';
+
 
 import Auth from '../utils/auth';
 
 const Dashboard = props => {
+    const { display_name: userParam } = useParams();
+    const { data } = useQuery(userParam ? QUERY_USER : QUERY_USER, {
+        variables: { display_name: userParam }
+    });
+
+    const user = data?.user
+    console.log(user);
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -29,7 +39,6 @@ const Dashboard = props => {
                 variables: { ...modalState }
             });
 
-            console.log({...modalState})
             console.log(data);
             return data;
         } catch (e) {
@@ -54,6 +63,8 @@ const Dashboard = props => {
                             Add Daily Stats
                         </button>
                     </div>
+
+                    
             
                     <div className="photo-section">
                         <div className="top-pics">
