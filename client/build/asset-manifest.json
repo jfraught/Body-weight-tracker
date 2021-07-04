@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.552c5f4e.chunk.css",
+    "main.js": "/static/js/main.360e6755.chunk.js",
+    "main.js.map": "/static/js/main.360e6755.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.62d986a0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.62d986a0.js.map",
+    "static/js/2.cfa7707c.chunk.js": "/static/js/2.cfa7707c.chunk.js",
+    "static/js/2.cfa7707c.chunk.js.map": "/static/js/2.cfa7707c.chunk.js.map",
+    "static/js/3.7ac8dd0f.chunk.js": "/static/js/3.7ac8dd0f.chunk.js",
+    "static/js/3.7ac8dd0f.chunk.js.map": "/static/js/3.7ac8dd0f.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.552c5f4e.chunk.css.map": "/static/css/main.552c5f4e.chunk.css.map",
+    "static/js/2.cfa7707c.chunk.js.LICENSE.txt": "/static/js/2.cfa7707c.chunk.js.LICENSE.txt",
+    "static/media/1.png": "/static/media/1.157f088b.png",
+    "static/media/dan.png": "/static/media/dan.8540fce2.png",
+    "static/media/goal.png": "/static/media/goal.f23c62ea.png",
+    "static/media/jordan.png": "/static/media/jordan.82f1a0cc.png",
+    "static/media/logoipsum.png": "/static/media/logoipsum.badfae15.png",
+    "static/media/muscle.png": "/static/media/muscle.d77fcdc5.png",
+    "static/media/sebastian.png": "/static/media/sebastian.fc6d832a.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.62d986a0.js",
+    "static/js/2.cfa7707c.chunk.js",
+    "static/css/main.552c5f4e.chunk.css",
+    "static/js/main.360e6755.chunk.js"
+  ]
+}
